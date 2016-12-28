@@ -115,6 +115,11 @@ class Pagination
 	{
 		return $this->endPage;
 	}
+	
+	public function getTotalCount() 
+	{
+		return $this->totalRecord;
+	}
 }
 
 ?>
