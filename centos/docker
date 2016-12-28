@@ -9,7 +9,7 @@ Linux guestos1 2.6.32-642.el6.x86_64 #1 SMP Tue May 10 17:27:01 UTC 2016 x86_64 
 
 # yum install http://ftp.riken.jp/Linux/fedora/epel/6/i386/epel-release-6-8.noarch.rpm
 # yum install docker-io
-# service docker restart (¶Ç´Â sudo docker -d &)
+# service docker restart (ë˜ëŠ” sudo docker -d &)
 # ifconfig
 docker0   Link encap:Ethernet  HWaddr 76:61:1C:12:1D:93
           inet addr:172.17.42.1  Bcast:0.0.0.0  Mask:255.255.0.0
