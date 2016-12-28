@@ -1,0 +1,62 @@
+# ps -ef | grep docker
+root      7940     1  0 12:54 pts/0    00:00:01 /usr/bin/docker -d
+root      8086  7759  0 13:10 pts/0    00:00:00 grep docker
+
+# docker search centos
+NAME                                   DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+centos                                 The official build of CentOS.                   2952      [OK]
+jdeathe/centos-ssh                     CentOS-6 6.8 x86_64 / CentOS-7 7.3.1611 x8...   52                   [OK]
+nimmis/java-centos                     This is docker images of CentOS 7 with dif...   20                   [OK]
+torusware/speedus-centos               Always updated official CentOS docker imag...   8                    [OK]
+egyptianbman/docker-centos-nginx-php   A simple and highly configurable docker co...   6                    [OK]
+nathonfowlie/centos-jre                Latest CentOS image with the JRE pre-insta...   5                    [OK]
+centos/mariadb55-centos7                                                               3                    [OK]
+harisekhon/centos-java                 Java on CentOS (OpenJDK, tags jre/jdk7-8)       2                    [OK]
+centos/tools                           Docker image that has systems administrati...   2                    [OK]
+blacklabelops/centos                   CentOS Base Image! Built and Updates Daily!     1                    [OK]
+darksheer/centos                       Base Centos Image -- Updated hourly             1                    [OK]
+harisekhon/centos-scala                Scala + CentOS (OpenJDK tags 2.10-jre7 - 2...   1                    [OK]
+timhughes/centos                       Centos with systemd installed and running       1                    [OK]
+sgfinans/docker-centos                 CentOS with a running sshd and Docker           1                    [OK]
+centos/redis                           Redis built for CentOS                          1                    [OK]
+januswel/centos                        yum update-ed CentOS image                      0                    [OK]
+ustclug/centos                          USTC centos                                    0                    [OK]
+vcatechnology/centos                   A CentOS Image which is updated daily           0                    [OK]
+repositoryjp/centos                    Docker Image for CentOS.                        0                    [OK]
+kz8s/centos                            Official CentOS plus epel-release               0                    [OK]
+grayzone/centos                        auto build for centos.                          0                    [OK]
+grossws/centos                         CentOS 6 and 7 base images with gosu and l...   0                    [OK]
+smartentry/centos                      centos with smartentry                          0                    [OK]
+aguamala/centos                        CentOS base image                               0                    [OK]
+dmglab/centos                          CentOS with some extras - This is for the ...   0                    [OK]
+
+# docker pull centos:latest
+latest: Pulling from centos
+3690474eb5b4: Pull complete
+0a444b299d5a: Downloading [====================================>              ] 50.82 MB/70.39 MB
+a04895de1996: Download complete
+d4350798c2ee: Download complete
+
+# docker images -a
+REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+centos              latest              d4350798c2ee        12 days ago         191.8 MB
+<none>              <none>              a04895de1996        12 days ago         191.8 MB
+<none>              <none>              0a444b299d5a        12 days ago         191.8 MB
+<none>              <none>              3690474eb5b4        3 months ago        0 B
+
+# docker run -i -t -d -p2001:22 centos /bin/bash
+
+# docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                  NAMES
+d2f974abf59e        centos              "/bin/bash"         5 seconds ago       Up 3 seconds        0.0.0.0:2001->22/tcp   sick_perlman
+
+# docker exec d2f974abf59e service ssh restart
+
+docker attach d2f974abf59e 로 접속후에 docker guest os 를 중지하지 않고 빠져나오려면 CTRL + P, CTRL + Q 로 빠져나온다.
+
+centos 설치후에 기본적으로 필요한 라이브러리
+# yum install openssh-server
+# yum install net-tools
+# yum reinstall initscripts
+
+

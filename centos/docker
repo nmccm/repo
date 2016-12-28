@@ -76,3 +76,6 @@ CPUs: 4
 Total Memory: 3.741 GiB
 Name: guestos1
 ID: ODK4:2HR7:KRRZ:P742:RXRL:DMUI:UWQ7:JAY4:TC5R:PHVI:UZ5R:PTT6
+
+# chkconfig docker on	
+재시작시에 자동으로 docker 가 실행될수 있도록 등록

@@ -1,0 +1,40 @@
+~ clock dependencies
+# apt-get install xview-clients
+# apt-get install rdate
+
+~ date check
+# clock -r
+# date 
+
+# apt-get update
+# apt-get install rcconf
+
+~ add-apt-repository dependencies
+# apt-get install software-properties-common
+
+~ php7 repository
+# add-apt-repository ppa:ondrej/php
+
+# apt-get update
+# apt-get install php7.0
+
+~ php re-install checked
+# dpkg -l | grep php
+# apt-get install curl git
+
+~ composer install
+# cd /root/
+# curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+
+~ rcconf apache2 remove
+# shutdown -r now [or shutdown -h now]
+
+
+~ nginx install
+# add-apt-repository ppa:nginx/stable
+# apt-get update
+# apt-get install nginx
+# dpkg -l | grep nginx
+
+~ php install
+# sudo apt-get install -y php7.0-fpm php7.0-redis php7.0-pgsql php7.0-xml php7.0-mbstring php7.0-zip php7.0-gd zip
