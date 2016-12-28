@@ -1,0 +1,78 @@
+# cat /etc/redhat-release
+CentOS release 6.8 (Final)
+
+# uname -a
+Linux guestos1 2.6.32-642.el6.x86_64 #1 SMP Tue May 10 17:27:01 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+
+# uname -r
+2.6.32-642.el6.x86_64
+
+# yum install http://ftp.riken.jp/Linux/fedora/epel/6/i386/epel-release-6-8.noarch.rpm
+# yum install docker-io
+# service docker restart (¶Ç´Â sudo docker -d &)
+# ifconfig
+docker0   Link encap:Ethernet  HWaddr 76:61:1C:12:1D:93
+          inet addr:172.17.42.1  Bcast:0.0.0.0  Mask:255.255.0.0
+          inet6 addr: fe80::7461:1cff:fe12:1d93/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:6 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 (0.0 b)  TX bytes:468 (468.0 b)
+
+eth0      Link encap:Ethernet  HWaddr 52:54:00:03:FB:C1
+          inet addr:111.111.111.111  Bcast:111.111.111.111  Mask:255.255.255.0
+          inet6 addr: fe80::5054:ff:fe03:fbc1/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:52909012 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:90580 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:4243981697 (3.9 GiB)  TX bytes:6928564 (6.6 MiB)
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+
+# docker version 
+Client version: 1.7.1
+Client API version: 1.19
+Go version (client): go1.4.2
+Git commit (client): 786b29d/1.7.1
+OS/Arch (client): linux/amd64
+Server version: 1.7.1
+Server API version: 1.19
+Go version (server): go1.4.2
+Git commit (server): 786b29d/1.7.1
+OS/Arch (server): linux/amd64
+
+# docker info
+Containers: 0
+Images: 0
+Storage Driver: devicemapper
+ Pool Name: docker-253:0-2884475-pool
+ Pool Blocksize: 65.54 kB
+ Backing Filesystem: extfs
+ Data file:
+ Metadata file:
+ Data Space Used: 305.7 MB
+ Data Space Total: 107.4 GB
+ Data Space Available: 107.1 GB
+ Metadata Space Used: 733.2 kB
+ Metadata Space Total: 2.147 GB
+ Metadata Space Available: 2.147 GB
+ Udev Sync Supported: true
+ Deferred Removal Enabled: false
+ Library Version: 1.02.117-RHEL6 (2016-04-01)
+Execution Driver: native-0.2
+Logging Driver: json-file
+Kernel Version: 2.6.32-642.el6.x86_64
+Operating System: <unknown>
+CPUs: 4
+Total Memory: 3.741 GiB
+Name: guestos1
+ID: ODK4:2HR7:KRRZ:P742:RXRL:DMUI:UWQ7:JAY4:TC5R:PHVI:UZ5R:PTT6
