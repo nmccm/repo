@@ -38,3 +38,18 @@
 
 ~ php install
 # sudo apt-get install -y php7.0-fpm php7.0-redis php7.0-pgsql php7.0-xml php7.0-mbstring php7.0-zip php7.0-gd zip
+
+~ nginx setup
+# vi /etc/nginx/nginx.conf
+# vi /etc/nginx/conf.d/xxx.conf		-- public web
+# vi /etc/nginx/conf.d/xxx.conf		-- private web
+
+~ postgresql install
+# apt-get update
+# apt-get install -y postgresql
+# apt-get install -y postgresql-contrib
+
+~ redis memory database install
+# apt-get update
+# apt-get install -y redis-server
+# sh -c "echo 'requirepass a9d8afb876756ef' >> /etc/redis/redis.conf"
