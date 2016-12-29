@@ -1,0 +1,26 @@
+~ redis client (redis desktop manager for window 7)
+https://redisdesktop.com/ 	
+
+~ ubuntu install
+# apt-get update
+# apt-get install redis-server
+
+~ redis password
+# sh -c "echo 'requirepass a9d8afb876756ef' >> /etc/redis/redis.conf"
+
+~ remote connection
+# /etc/redis/redis.conf		-- bind 0.0.0.0
+
+~ redis dump
+# cat /etc/redis/redis.conf |grep '^dir '|cut -d' ' -f2
+# ls -al /var/lib/redis/
+# cp -a /var/lib/redis/dump.rdb .
+
+~ redis restore
+# service redis-server stop
+# cp -a /var/lib/redis/dump.rdb /var/lib/redis/dump.rdb.$date.backup
+# scp {user}@{ip}:{path}/dump.rdb /var/lib/redis/
+# service redis-server restart
+
+
+
