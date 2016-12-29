@@ -1,0 +1,37 @@
+~ connection 
+# sudo -i -u postgres
+# psql -h localhost -U user		-- localhost 로 접속이 안될시엔 /etc/postgresql/9.3/main/pg_hba.conf 수정
+
+pg_hba.conf {
+	# Database administrative login by Unix domain socket
+	#local   all             postgres                                peer
+	local   all             postgres                                trust
+	
+	# TYPE  DATABASE        USER            ADDRESS                 METHOD
+	
+	# "local" is for Unix domain socket connections only
+	#local   all             all                                     peer
+	local   all             all                                     md5
+	
+	# IPv4 local connections:
+	#host    all             all             0.0.0.0/0               md5
+	host    all             all             127.0.0.1/32            md5
+	
+	# IPv6 local connections:
+	host    all             all             ::1/128                 md5
+	
+	# add pbh - 0419 for tool
+	host    all             all             111.111.111.0/24         md5
+	# Allow replication connections from localhost, by a user with the
+	# replication privilege.
+	#local   replication     postgres                                peer
+	#host    replication     postgres        127.0.0.1/32            md5
+	#host    replication     postgres        ::1/128                 md5
+}
+
+~ show database
+# select * from pg_database;
+
+~ show users
+# select * from pg_user;
+# select * from pg_shadow;
