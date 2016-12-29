@@ -1,0 +1,17 @@
+(legacy system)
+~ svn dump 
+~ svnadmin dump {repository name} > [filename]
+# svnadmin dump /home/svn/project1 > project1.dump
+
+(new system)
+# mkdir /home/svn
+# cd /home/svn
+# svnadmin create --fs-type fsfs {repository name}
+
+~ svn load
+# svnadmin load /home/svn/{repository name} < project1.dump
+
+~ config file sync 
+# scp -P {port} /home/svn/{repository name}/conf/* {username}@{ip}:{path}/conf/
+# scp -P {port} {username}@{ip}:{path}/conf/* /home/svn/{repository name}/conf/
+  
