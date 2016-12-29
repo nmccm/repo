@@ -35,3 +35,18 @@ pg_hba.conf {
 ~ show users
 # select * from pg_user;
 # select * from pg_shadow;
+
+~ database export
+# sudo -i -u postgres
+# pg_dump {database_name} -U {user} -h localhost > {filename}.dump
+
+~ database import
+# sudo -i -u postgres
+# psql -f {filename}.dump {database_name| -U {user} -h localhost
+
+~ database create & drop & user password setting 
+# psql -c "drop database dt"
+psql -c "CREATE DATABASE dt"
+psql -c "CREATE ROLE user PASSWORD 'a9d8afb876756ef' LOGIN"
+psql -c "GRANT ALL ON DATABASE dt TO user"		-- database 명과 user 명이 같이 확실치 않음 
+
