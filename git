@@ -1,0 +1,33 @@
+# git clone ssh://root@111.111.111.111:22/home/path [path]
+# git clone ssh://root@111.111.111.111:22/home/path/git.git [path]
+# git clone nin@111.111.111.111:git/srv.git nin-v2	// 명령어를 실행시킨 폴더 하위에 nin-v2 폴더가 생성됨
+
+nin@dev2center:~/git/srv.git$ ls -al
+total 44
+drwxrwxr-x   7 nin nin 4096 Oct 13 17:35 .
+drwxrwxr-x   9 nin nin 4096 Feb  5  2016 ..
+drwxrwxr-x   2 nin nin 4096 Dec 14  2015 branches
+-rw-r--r--   1 root  root   112 Aug 16 13:26 config
+-rwxrwxr-x   1 nin nin   73 Dec 14  2015 description
+-rwxrwxr-x   1 nin nin   23 Dec 14  2015 HEAD
+drwxrwxr-x   2 nin nin 4096 Dec 14  2015 hooks
+drwxrwxr-x   2 nin nin 4096 Oct 13 17:35 info
+drwxrwxr-x 260 nin nin 4096 Dec  8 14:52 objects
+-rw-rw-r--   1 nin nin  813 Oct 13 17:34 packed-refs
+drwxrwxr-x   4 nin nin 4096 Dec 14  2015 refs
+
+nin@dev2center:~/git/srv.git$ pwd
+/home/nin/git/srv.git
+
+
+# git remote -v
+# git log
+# git status
+# git add .
+# git add filename
+# git commit -m 'msg'
+# git push origin master
+
+# git push origin --delete ret_issue1
+
+
