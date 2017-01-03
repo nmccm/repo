@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />        
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">    
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<select class="form-control" id="userState1">
+	<option value="1">정상</option>
+	<option value="2">차단</option>
+	<option value="3">탈퇴</option>
+</select>
+	
+	
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document" style="width:1000px;">
+		<div class="modal-content" style="width:100%;">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">계정 차단 및 정지</h4>
+			</div>
+			<div class="modal-body">
+            	<table width="100%" class="table">
+            		<tbody>
+						<tr>
+                        	<td class="active" width="20%">구분</td>
+                        	<td>
+                        		<label class="radio-inline"><input type="radio" name="optradio" checked>계정 차단</label>
+                        		<label class="radio-inline"><input type="radio" name="optradio">채팅 차단</label>
+                        		<label class="radio-inline"><input type="radio" name="optradio">정지</label>
+                        	</td>
+                        </tr>
+						<tr>
+                        	<td class="active">사유</td>
+                        	<td>
+								<select class="form-control">
+									<option value="1111">사유사유11111</option>
+									<option value="22222">사유사유2222</option>
+									<option value="33333">사유사유33333</option>
+								</select>	
+                        	</td>
+                        </tr>  
+						<tr>
+                        	<td class="active">기간</td>
+                        	<td>
+                        		<label class="radio-inline"><input type="radio" name="optradio">즉시</label>
+                        		<label class="radio-inline"><input type="radio" name="optradio" checked>기간</label>
+                        		<label class="radio-inline form-inline">
+                        			<input type="text" class="form-control" id="start-search-date" value="" /> ~ <input type="text" class="form-control" id="end-search-date" value="" />
+                        		</label>
+                        	</td>
+                        </tr> 
+                        <tr>
+                        	<td><button type="button" class="btn btn-primary">적용</button></td>
+                        </tr>
+					</tbody>
+            	</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/metisMenu/metisMenu.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script type="text/javascript">    	
+	jQuery.browser = {};
+	(function () {
+		jQuery.browser.msie = false;
+		jQuery.browser.version = 0;
+		if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+    		jQuery.browser.msie = true;
+    		jQuery.browser.version = RegExp.$1;
+		}
+	})();		
+
+
+	$(function() {
+	    $("#start-search-date, #end-search-date").datepicker({			    
+		    showOtherMonths: true,
+			dateFormat: 'yy-mm-dd',
+			changeYear: true,
+			changeMonth: true,		
+	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+			monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	        onSelect: function() {
+		        console.log($(this).attr("id"));
+	        },			    
+			onClose: function(selectedDate){
+				if($(this).attr("id") == "start-search-date") {
+					$("#end-search-date").datepicker("option", "minDate", selectedDate);
+				}
+			}
+		});					
+	});		
+</script>	
+
+<script type="text/javascript">
+	$(function() {		
+		// select box change listener
+		$("#userState1").change(function() {
+			if($("#userState1 option:selected").val() != "1") {
+				$("#myModal2").modal("toggle");										
+			}
+		});
+		
+		// hidden event listener
+		$("#myModal2").on("hidden.bs.modal", function() {
+			console.log("hidden");
+		});
+		
+		// show event listener
+		$("#myModal2").on("show.bs.modal", function() {
+			console.log("show");
+		});							
+	});
+</script>
