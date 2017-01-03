@@ -43,11 +43,11 @@ pg_hba.conf {
 
 ~ database import
 # sudo -i -u postgres
-# psql -f {filename}.dump {database_name| -U {user} -h localhost
+# psql -f {filename}.dump {database_name} -U {user} -h localhost
 
 ~ database create & drop & user password setting 
 # psql -c "drop database dt"
 psql -c "CREATE DATABASE dt"
-psql -c "CREATE ROLE user PASSWORD '07e8556f9277cb305b45ecf92a9d8afb876756ef' LOGIN"
+psql -c "CREATE ROLE user PASSWORD '876756ef' LOGIN"
 psql -c "GRANT ALL ON DATABASE dt TO user"		-- database 명과 user 명이 같아 확실치 않음 
 
