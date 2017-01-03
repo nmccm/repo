@@ -1,0 +1,23 @@
+vi app.js
+{
+	console.log('server start ....')
+	console.log('listen ....');
+	
+	var http = require('http');
+	
+	var server = http.createServer(function (req, res) {
+		console.log('client connection ...');
+		res.writeHead(200, { 'Content-Type' : 'text/plain' });
+		res.write('welcome nodeJS server');
+		console.log('response write : welcome nodeJS server');
+		res.end();
+		console.log('response close');
+		console.log('listen ....');
+	});
+	
+	server.listen(20009);
+}
+
+# node app.js
+# netstat -anp | grep "LISTEN " | grep 20009
+# wget http://localhost:20009 
