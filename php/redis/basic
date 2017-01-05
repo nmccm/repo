@@ -1,0 +1,25 @@
+<?php
+
+try {
+	$redis = new Redis();
+	$result = $redis->pconnect('111.111.111.1111', 6379);
+	if (!$result) {
+		throw new Exception("connection failure");
+	}	
+	$result = $redis->auth('123456789');
+	if (!$result) {
+		throw new Exception("auth failure");
+	}	
+	//$redis->select(1);	// use scope 0 ~ 15
+	$key = "step:redis:".time();
+	$result = $redis->set($key, json_encode($_SESSION));
+	var_udmp($result);
+	print PHP_EOL;
+}
+catch(Exception $e) {
+	print 'Exception message : ' . $e->getMessage();
+	print PHP_EOL;
+	print_r($e);
+}
+
+?>
