@@ -1,0 +1,2 @@
+~ 레디스 초기화는 redis-cli 를 실행한후 초기화 하고자 하는 DB 로 이동, 초기화 명령 실행
+name:0> flushall 
