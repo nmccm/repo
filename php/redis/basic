@@ -13,7 +13,7 @@ try {
 	//$redis->select(1);	// use scope 0 ~ 15
 	$key = "step:redis:".time();
 	$result = $redis->set($key, json_encode($_SESSION));
-	var_udmp($result);
+	var_dump($result);
 	print PHP_EOL;
 }
 catch(Exception $e) {
