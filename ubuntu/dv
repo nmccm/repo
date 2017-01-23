@@ -53,3 +53,42 @@
 # apt-get update
 # apt-get install -y redis-server
 # sh -c "echo 'requirepass a9d8afb876756ef' >> /etc/redis/redis.conf"
+
+~ redis config (/etc/redis/redis.conf)
+# vi /etc/redis/redis.conf
+bind 0.0.0.0
+requirepass
+# service redis-server restart
+
+~ postgresql config (/etc/postgresql/9.3/main/postgresql.conf)
+# vi /etc/postgresql/9.3/main/postgresql.conf
+listen_address = '*'
+# vi /etc/postgresql/9.3/main/pg_hba.conf
+# sudo -i -u postgres
+# psql -c "drop database dt"
+psql -c "CREATE DATABASE dt"
+psql -c "CREATE ROLE user PASSWORD '876756ef' LOGIN"
+psql -c "GRANT ALL ON DATABASE dt TO user"		-- database 명과 user 명이 같아 확실치 않음
+
+~ git clone
+# sudo -i -u ninja
+# git clone user@111.111.111.111:git/server_php.git {dirname} 
+# chmod 777 log; chmod 777 gamedata; chmod 777 src/Gamedata; chmod 777 admin/log; chmod 777 admin/public/history
+
+~ Config file copy
+# scp -P 0000 user@111.111.111.111:{dirname}/Config.php .
+# vi Config.php
+DB_HOST = 'localhost'
+REDIS_HOST = ''
+
+~ pgsql backup and restore
+# pg_dump {database_name} -U {user} -h localhost > {filename}.dump
+# psql -f {filename}.dump {database_name} -U {user} -h localhost
+# service postgresql restart
+
+~ redis data file copy
+# scp -P 9999 user@111.111.111.111:/var/lib/redis/dump.rdb .
+# service redis-server restart
+
+
+
