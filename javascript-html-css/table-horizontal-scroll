@@ -1,6 +1,6 @@
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="overflow-x:scroll; background-color:#fff;">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="overflow-x:auto; background-color:#fff;">
 
-	<table class="table table-bordered table-hover" id="table1" excel="target1" style="width:1500px;">
+	<table class="table table-bordered table-hover" excel="target1" style="width:1500px;max-width:1500px;">
 		<thead>
 			<tr class="active">
             	<th class="text-center">11</th>
