@@ -6,7 +6,7 @@
 				//$langList = ['영어','일본어','태국어','스페인어','러시아어','포르투칼어','독일어','프랑스어','중국어(번체)'];
 				foreach($langList as $i => $value) {	                    			
 			?>
-			<form style="padding:3px;" class="form-inline" role="form" action="<?php echo \Ironlady\Nconst\Page::PAGE_FILE_UPLOAD; ?>" method="post" enctype="multipart/form-data" id="ajax-submit-<?php echo $i; ?>">
+			<form style="padding:3px;" class="form-inline" role="form" action="<?php echo Page::PAGE_FILE_UPLOAD; ?>" method="post" enctype="multipart/form-data" id="ajax-submit-<?php echo $i; ?>">
 				<div class="checkbox">
 					<label class="label-not-bold" style="width:80px;"><?php echo $value; ?></label> 
 				</div>	                    												 
