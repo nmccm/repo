@@ -48,9 +48,16 @@ $app->add(function ($request, $response, $next)
 });
 ```
 
-## Test
+# 쉘 명령어
+
+```linux
+# ls -al
+```
+
+## Hidden test example
 
 일반 주석을 사용해보면 다음과 같다.
 
 // 라인주석
+
 /* 블럭 주석 */
