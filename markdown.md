@@ -47,3 +47,10 @@ $app->add(function ($request, $response, $next)
     return $response;
 });
 ```
+
+## Test
+
+일반 주석을 사용해보면 다음과 같다.
+
+// 라인주석
+/* 블럭 주석 */
