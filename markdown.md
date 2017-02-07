@@ -87,4 +87,4 @@ $app->add(function ($request, $response, $next)
 
 아래 이미지는 구글 클라우드에 저장되어있으며, 클릭시 구글로 가도록 링크 되어 있다.
 
-![texxt](https://drive.google.com/open?id=0B9T2uJMhGmG6NGxxamRLR3dHdXc)
+![texxt](https://drive.google.com/file/d/0B9T2uJMhGmG6NGxxamRLR3dHdXc/view)
