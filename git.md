@@ -64,3 +64,21 @@ $ git push origin master
 $ git remote -v
 $ git remote remove origin
 ```
+
+## 원격 저장소 복제
+
+최초 개인 저장소에서 소스를 푸시 한후, 타 개발자에게 소스를 전달할경우 사용된다. 아래 명령어를 사용할경우 해당 폴더를 기준으로 하위폴더에 sample 폴더가 생성된다.
+
+```linux
+git clone note@1.1.1.1:/home/note/sample.git sample
+```
+
+## Trouble Shooting
+
+만약 아래와 같은 에러가 발생하면 윈도우의 CR (carriage-Return) 때문에 발생하는 문제이므로 다음과 같이 설정하자.
+
+```linux
+$ git config –-global core.autocrlf true
+$ git config –-global core.autocrlf input
+$ git config –-global core.autocrlf false
+```
