@@ -2,11 +2,6 @@
 
 버전관리 프로그램
 
-### 용어정의
-
-- 메인 공유 저장소 : 개발자들이 공유하여 사용할 메일 저장소 (서버에 위치)
-- 개인 저장소 : 개인이 사용할 저장소 (개발자 로컬에 위치)
-
 ## install for centos 6.8
 
 ```linux
@@ -61,7 +56,7 @@ $ git remote add origin note@1.1.1.1:/home/note/sample.git 	// remote 저장소 
 $ git push origin master
 ```
 
-### 등록된 원격 저장소 확인 및 삭제
+## 등록된 원격 저장소 확인 및 삭제
 
 등록된 원격 저장소 확인 및 삭제 방법
 
