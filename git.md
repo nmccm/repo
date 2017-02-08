@@ -53,11 +53,12 @@ $ git init		// .git 디렉토리가 생긴것을 확인할수 있다.
 $ git add .		// commit file 들을 추가 (.은 모든 파일을 뜻함)
 $ git status										// commit status 확인
 $ git config --list									// 환경 설정 확인
-$ git config user.name 'name'						// commit user 설정
-$ git config user.email 'email'						// commit user email 설정
+$ git config --global user.name 'name'						// commit user 설정
+$ git config --global user.email 'email'						// commit user email 설정
 $ git config color.ui 'auto'						// color 설정
 $ git commit -m 'msg'								// commit with msg
-$ git remote add origin note@1.1.1.1:sample.git 	//
+$ git remote add origin note@1.1.1.1:/home/note/sample.git 	// remote 저장소 등록
+$ git push origin master
 ```
 
 ### 등록된 원격 저장소 확인 및 삭제
