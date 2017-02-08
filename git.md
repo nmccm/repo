@@ -2,7 +2,7 @@
 
 버전관리 프로그램
 
-## 용어정의
+### 용어정의
 
 - 메인 공유 저장소 : 개발자들이 공유하여 사용할 메일 저장소 (서버에 위치)
 - 개인 저장소 : 개인이 사용할 저장소 (개발자 로컬에 위치)
@@ -22,13 +22,13 @@
 # su - note
 ```
 
-저장소에 사용할 디렉토리 생성, 이동, 빈 저장소를 생성
+저장소에 사용할 디렉토리 생성, 이동, 빈 저장소를 생성 (저장소 디렉토리명은 관행상 .git 를 붙이도록 한다)
 		
 ```linux	
-$ mkdir sample			
-$ cd sample		 	
+$ mkdir sample.git			
+$ cd sample.git		 	
 $ git init --bare
-Initialized empty Git repository in /home/note/sample/	
+Initialized empty Git repository in /home/note/sample.git/	
 $ ls -al
 drwxrwxr-x. 7 note note 4096 2017-02-07 17:51 .
 drwx------. 3 note note 4096 2017-02-07 17:50 ..
@@ -44,8 +44,27 @@ drwxrwxr-x. 4 note note 4096 2017-02-07 17:51 refs
 
 ## 클라이언트 저장소 생성 (개인 저장소)
 
-메인 저장소로 사용한 서버가 아닌 타 서버에서 실행한다. 여기서는 composer 를 사용하여 일반 프로젝트 폴더를 생성, 등록한다.
+프로젝트 폴더로 이동하여 개인저장소를 생성하고, 작업된 파일들을 푸시한다.
 
 ```linux
-...
+$ cd ~projectDir
+$ vi .gitignore		// .gitignore 파일을 생성하며 커밋하지 않을 파일을 설정 (git init 이후에 만들어지는 .gitignore 는 적용되지 않으므로 캐쉬를 git 캐쉬를 삭제해야한 한다.)
+$ git init		// .git 디렉토리가 생긴것을 확인할수 있다.				
+$ git add .		// commit file 들을 추가 (.은 모든 파일을 뜻함)
+$ git status										// commit status 확인
+$ git config --list									// 환경 설정 확인
+$ git config user.name 'name'						// commit user 설정
+$ git config user.email 'email'						// commit user email 설정
+$ git config color.ui 'auto'						// color 설정
+$ git commit -m 'msg'								// commit with msg
+$ git remote add origin note@1.1.1.1:sample.git 	//
+```
+
+### 등록된 원격 저장소 확인 및 삭제
+
+등록된 원격 저장소 확인 및 삭제 방법
+
+```linux
+$ git remote -v
+$ git remote remove origin
 ```
