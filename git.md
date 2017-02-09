@@ -43,15 +43,15 @@ drwxrwxr-x. 4 note note 4096 2017-02-07 17:51 refs
 
 ```linux
 $ cd ~projectDir
-$ vi .gitignore		// .gitignore 파일을 생성하며 커밋하지 않을 파일을 설정 (git init 이후에 만들어지는 .gitignore 는 적용되지 않으므로 캐쉬를 git 캐쉬를 삭제해야한 한다.)
-$ git init		// .git 디렉토리가 생긴것을 확인할수 있다.				
-$ git add .		// commit file 들을 추가 (.은 모든 파일을 뜻함)
-$ git status										// commit status 확인
-$ git config --list									// 환경 설정 확인
+$ vi .gitignore												// .gitignore 파일을 생성하며 커밋하지 않을 파일을 설정 (git init 이후에 만들어지는 .gitignore 는 적용되지 않으므로 캐쉬를 git 캐쉬를 삭제해야한 한다.)
+$ git init													// .git 디렉토리가 생긴것을 확인할수 있다.				
+$ git add .													// commit file 들을 추가 (.은 모든 파일을 뜻함)
+$ git status												// commit status 확인
+$ git config --list											// 환경 설정 확인
 $ git config --global user.name 'name'						// commit user 설정
-$ git config --global user.email 'email'						// commit user email 설정
-$ git config color.ui 'auto'						// color 설정
-$ git commit -m 'msg'								// commit with msg
+$ git config --global user.email 'email'					// commit user email 설정
+$ git config color.ui 'auto'								// color 설정
+$ git commit -m 'msg'										// commit with msg
 $ git remote add origin note@1.1.1.1:/home/note/sample.git 	// remote 저장소 등록
 $ git push origin master
 ```
