@@ -39,7 +39,8 @@ pg_hba.conf {
 
 ~ database export
 # sudo -i -u postgres
-# pg_dump {database_name} -U {user} -h localhost > {filename}.dump
+$ pg_dump {database_name} -U {user} -h localhost > {filename}.dump
+$ pg_dump {database_name} -t {table} -U {user} -h localhost > {filename}.dump
 
 ~ database import
 # sudo -i -u postgres
