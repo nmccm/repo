@@ -76,7 +76,13 @@ postgres=# \du
  bbbb        |                                                | {} 
  postgres    | Superuser, Create role, Create DB, Replication | {}
 
-postgres=# \du
+postgres=# select * from pg_roles;
+   rolname   | rolsuper | rolinherit | rolcreaterole | rolcreatedb | rolcatupdate | rolcanlogin | rolreplication | rolconnlimit | rolpassword | rolvaliduntil | rolconfig |  oid
+-------------+----------+------------+---------------+-------------+--------------+-------------+----------------+--------------+-------------+---------------+-----------+--------
+ aaaa        | f        | t          | f             | f           | f            | t           | f              |           -1 | ********    |               |           |  34016
+ postgres    | t        | t          | t             | t           | t            | t           | t              |           -1 | ********    |               |           |     10
+ bbbb        | t        | t          | f             | f           | t            | t           | f              |           -1 | ********    |               |           |  25805 
+(6 rows)
 ```
 
 
