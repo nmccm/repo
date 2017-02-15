@@ -11,6 +11,17 @@ $ psql --version
 psql (PostgreSQL) 9.3.13
 ```
 
+## install for centos 6.8
+
+```linux
+# yum -y install postgresql postgresql-contrib postgresql-server
+# service postgresql initdb
+$ su - postgresql
+$ ps -ef | grep post
+$ psql --version  
+psql (PostgreSQL) 9.3.13
+```
+
 ## Database Create, Drop 
 
 linux shell command
@@ -46,5 +57,26 @@ linux shell command (restore)
 # PGPASSWORD={password} psql -U {user} -h localhost < sql/schema.sql
 ```
 
+## Connect
+
+```linux
+# sudo -i -u postgres
+$ psql
+postgres=# \du
+```
+
+## role 
+
+```linux
+postgres=# \du
+                              List of roles
+  Role name  |                   Attributes                   | Member of
+-------------+------------------------------------------------+-----------
+ aaaa        | Superuser                                      | {}
+ bbbb        |                                                | {} 
+ postgres    | Superuser, Create role, Create DB, Replication | {}
+
+postgres=# \du
+```
 
 
