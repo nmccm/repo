@@ -14,9 +14,13 @@ postgres=# CREATE EXTENSION dblink;
 using
 
 postgresql-server
+
 ㄴdatabase1
+
 	ㄴ table1
+	
 ㄴdatabase2
+
 	ㄴ table2
 
 ```linux
