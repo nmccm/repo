@@ -30,6 +30,10 @@ postgres=# insert into table1 (log_time, user_id, kind, cmd, action)
 				'select log_time, user_id, kind, cmd, action from table2 where user_id = 509'
 			) 
 			as t1(
-				log_time timestamp with time zone, user_id integer, kind character(3), cmd character varying(32), action json
+				log_time timestamp with time zone, 
+				user_id integer, 
+				kind character(3), 
+				cmd character varying(32), 
+				action json
 			) 
 ```
