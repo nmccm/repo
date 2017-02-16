@@ -13,10 +13,6 @@ postgres=# CREATE EXTENSION dblink;
 
 using
 
-postgresql-server
-postgresql-server - database1 - table1
-postgresql-server - database2 - table2
-
 ```linux
 postgres=# insert into table1 (log_time, user_id, kind, cmd, action)
 			select * from dblink(
