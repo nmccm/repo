@@ -65,13 +65,77 @@ $ git remote -v
 $ git remote remove origin
 ```
 
+## 브랜치 전체 리스트 확인 및 브랜치 이동 방법, 브랜치 삭제
+
+```linux
+$ git branch -a
+$ git checkout <branch_name>
+$ git branch -d <branch_name>	// 브랜치를 이동후 삭제하여야 한다.
+$ git branch -b <branch_name> origin/master
+Deleted branch issue1 (was e59bd24).
+```
+
+
 ## 원격 저장소 복제
 
 최초 개인 저장소에서 소스를 푸시 한후, 타 개발자에게 소스를 전달할경우 사용된다. 아래 명령어를 사용할경우 해당 폴더를 기준으로 하위폴더에 sample 폴더가 생성된다.
 
 ```linux
-git clone note@1.1.1.1:/home/note/sample.git sample
+$ git clone note@1.1.1.1:/home/note/sample.git sample
 ```
+
+## stash
+
+local master 브랜치에서 작업도중 새로운 일감을 처리해야될 경우 stash 사용하여 처리한다. 아래는 기존 master 브랜치에서 newWorkFile 을 생성하고 기존 first 파일을 수정한다음, 새로운 일감을 처리할때 stash 사용법을 다룬다.
+
+```linux
+$ vi master1		// 새로운 파일을 생성하고
+$ vi first			// 기존 파일을 수정한다.
+$ git status 
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   first
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        master1
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git stash
+Saved working directory and index state WIP on master: e711e9c temp commit
+HEAD is now at e711e9c temp commit
+
+$ git status		// stash 명령 덕분에 새로운 파일만 남고 기존에 수정하던 파일은 숨겨진다.
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        master1
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+$ git stash list		// list 확인
+stash@{0}: WIP on master: e711e9c temp commit
+
+// 새로운 이슈사항을 적용하고 commit & push
+$ vi first	// 새로운 라인에 추가
+$ git add first
+$ git commit -m 'first bug fix'
+$ git push origin master
+
+// stash 복원
+$ git stash apply
+$ git stash clear	// stash list clear 
+``` 
 
 ## Trouble Shooting
 
