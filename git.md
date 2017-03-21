@@ -24,6 +24,7 @@ $ mkdir sample.git
 $ cd sample.git		 	
 $ git init --bare
 Initialized empty Git repository in /home/note/sample.git/	
+
 $ ls -al
 drwxrwxr-x. 7 note note 4096 2017-02-07 17:51 .
 drwx------. 3 note note 4096 2017-02-07 17:50 ..
@@ -40,6 +41,8 @@ drwxrwxr-x. 4 note note 4096 2017-02-07 17:51 refs
 ## 클라이언트 저장소 생성 (개인 저장소)
 
 프로젝트 폴더로 이동하여 개인저장소를 생성하고, 작업된 파일들을 푸시한다.
+
+** skdlfjsldjf
 
 ```linux
 $ cd ~projectDir
