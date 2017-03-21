@@ -40,20 +40,34 @@ drwxrwxr-x. 4 note note 4096 2017-02-07 17:51 refs
 
 ## 클라이언트 저장소 생성 (개인 저장소)
 
-프로젝트 폴더로 이동하여 개인저장소를 생성하고, 작업된 파일들을 푸시한다.
-
-** skdlfjsldjf
+프로젝트 폴더로 이동 및 .gitignore 파일 작성
+.gitignore 파일을 생성하며 커밋하지 않을 파일을 설정 (git init 이후에 만들어지는 .gitignore 는 적용되지 않으므로 캐쉬를 git 캐쉬를 삭제해야한 한다.
 
 ```linux
 $ cd ~projectDir
-$ vi .gitignore												// .gitignore 파일을 생성하며 커밋하지 않을 파일을 설정 (git init 이후에 만들어지는 .gitignore 는 적용되지 않으므로 캐쉬를 git 캐쉬를 삭제해야한 한다.)
-$ git init													// .git 디렉토리가 생긴것을 확인할수 있다.				
-$ git add .													// commit file 들을 추가 (.은 모든 파일을 뜻함)
-$ git status												// commit status 확인
+$ vi .gitignore
+```
+
+저장소 생성 및 최초 파일 등록
+
+```linux
+$ git init				// .git 디렉토리가 생긴것을 확인할수 있다.
+$ git add .				// commit file 들을 추가 (.은 모든 파일을 뜻함)
+$ git reset <filename>	// 로컬 스테이지에 저장된 파일을 제거 unadd
+$ git status			// 상태 확인
+```
+
+환경 설정
+
+```linux
 $ git config --list											// 환경 설정 확인
 $ git config --global user.name 'name'						// commit user 설정
 $ git config --global user.email 'email'					// commit user email 설정
 $ git config color.ui 'auto'								// color 설정
+```
+
+커밋 및 원격 저장소 추가, Push
+
 $ git commit -m 'msg'										// commit with msg
 $ git remote add origin note@1.1.1.1:/home/note/sample.git 	// remote 저장소 등록
 $ git push origin master
@@ -74,10 +88,14 @@ $ git remote remove origin
 $ git branch -a
 $ git checkout <branch_name>
 $ git branch -d <branch_name>	// 브랜치를 이동후 삭제하여야 한다.
-$ git branch -b <branch_name> origin/master
 Deleted branch issue1 (was e59bd24).
 ```
 
+### 원격 저장소로부터 새로운 브랜치 생성
+
+```linux
+$ git branch -b <branch_name> origin/master
+```
 
 ## 원격 저장소 복제
 
@@ -89,7 +107,7 @@ $ git clone note@1.1.1.1:/home/note/sample.git sample
 
 ## stash
 
-local master 브랜치에서 작업도중 새로운 일감을 처리해야될 경우 stash 사용하여 처리한다. 아래는 기존 master 브랜치에서 newWorkFile 을 생성하고 기존 first 파일을 수정한다음, 새로운 일감을 처리할때 stash 사용법을 다룬다.
+local master 브랜치 작업도중 새로운 일감을 처리해야될 경우 stash 사용하여 처리한다. 
 
 ```linux
 $ vi master1		// 새로운 파일을 생성하고
