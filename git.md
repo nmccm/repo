@@ -69,7 +69,7 @@ $ git config color.ui 'auto'				// color 설정
 커밋 및 원격 저장소 추가, Push
 
 ```linux
-$ git commit -m msg										// commit with msg
+$ git commit -m <msg>										// commit with msg
 $ git remote add origin note@1.1.1.1:/home/note/sample.git 	// remote 저장소 등록
 $ git push origin master
 ```
@@ -171,7 +171,7 @@ stash@{0}: WIP on master: e711e9c temp commit
 // 새로운 이슈사항을 적용하고 commit & push
 $ vi first	// 새로운 이슈사항 처리
 $ git add first
-$ git commit -m 'first bug fix'
+$ git commit -m <msg>
 $ git push origin master
 
 // stash 복원 및 삭제
