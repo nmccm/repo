@@ -60,22 +60,23 @@ $ git status			// 상태 확인
 환경 설정
 
 ```linux
-$ git config --list											// 환경 설정 확인
-$ git config --global user.name 'name'						// commit user 설정
-$ git config --global user.email 'email'					// commit user email 설정
-$ git config color.ui 'auto'								// color 설정
+$ git config --list							// 환경 설정 확인
+$ git config --global user.name 'name'		// commit user 설정
+$ git config --global user.email 'email'	// commit user email 설정
+$ git config color.ui 'auto'				// color 설정
 ```
 
 커밋 및 원격 저장소 추가, Push
 
-$ git commit -m 'msg'										// commit with msg
+```linux
+$ git commit -m msg										// commit with msg
 $ git remote add origin note@1.1.1.1:/home/note/sample.git 	// remote 저장소 등록
 $ git push origin master
 ```
 
 ## 등록된 원격 저장소 확인 및 삭제
 
-등록된 원격 저장소 확인 및 삭제 방법
+등록된 원격 저장소 확인 및 삭제 방법 (remote add 시에 origin 으로 이름을 붙였기 때문에 삭제도 origin)
 
 ```linux
 $ git remote -v
@@ -91,8 +92,7 @@ $ git branch -d <branch_name>	// 브랜치를 이동후 삭제하여야 한다.
 Deleted branch issue1 (was e59bd24).
 ```
 
-### 원격 저장소로부터 새로운 브랜치 생성
-
+## 원격 저장소로부터 새로운 브랜치 생성
 ```linux
 $ git branch -b <branch_name> origin/master
 ```
@@ -105,58 +105,98 @@ $ git branch -b <branch_name> origin/master
 $ git clone note@1.1.1.1:/home/note/sample.git sample
 ```
 
-## stash
+## .gitignore 수정후 재 적용 방법
 
-local master 브랜치 작업도중 새로운 일감을 처리해야될 경우 stash 사용하여 처리한다. 
+간혹 사용도중 새로운 개발자가 들어오고, 그 개발자가 자신의 개발툴 환경설정 파일 (다른 개발자에게도 있는 파일)을 올리게 되면 .gitignore 파일에 등록해야하는데, 이 파일이 중간에 등록하면 효력을 발휘하지 못한다.
+그럴때는 캐쉬를 삭제해 줌으로써 처리가능
 
 ```linux
-$ vi master1		// 새로운 파일을 생성하고
-$ vi first			// 기존 파일을 수정한다.
+$ git update-index --assume-unchanged WebApplication1/WebApplication1.csproj 
+```
+
+반대로 다시 트래킹을 하기 싶다면
+
+```linux
+git update-index --no-assume-unchanged WebApplication1/WebApplication1.csproj  
+```
+
+## 동일 브랜치에서 stash 방법
+
+local master 브랜치 작업도중 새로운 일감을 처리해야될 경우 stash 사용하여 처리한다. 
+아래는 master1 의 새로운 파일을 생성하고, 기존 first 파일을 수정한 상황에서 새로운 이슈가 들어왔다고 가정. 
+
+```linux
+$ vi master1		
+$ vi first			
 $ git status 
 On branch master
 Your branch is up-to-date with 'origin/master'.
-
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
-
         modified:   first
-
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-
         master1
-
 no changes added to commit (use "git add" and/or "git commit -a")
+```
 
+현재 상태를 stash 를 한다.
+
+```linux
 $ git stash
 Saved working directory and index state WIP on master: e711e9c temp commit
 HEAD is now at e711e9c temp commit
+```
 
-$ git status		// stash 명령 덕분에 새로운 파일만 남고 기존에 수정하던 파일은 숨겨진다.
+상태를 보면 stash 덕분에 새로운 파일만 남고 기존에 수정하던 파일은 숨겨진다.
+
+```linux
+$ git status		
 On branch master
 Your branch is up-to-date with 'origin/master'.
-
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-
         master1
-
 nothing added to commit but untracked files present (use "git add" to track)
+```
 
+stash 리스트를 확인
+
+```linux
 $ git stash list		// list 확인
 stash@{0}: WIP on master: e711e9c temp commit
+```
 
 // 새로운 이슈사항을 적용하고 commit & push
-$ vi first	// 새로운 라인에 추가
+$ vi first	// 새로운 이슈사항 처리
 $ git add first
 $ git commit -m 'first bug fix'
 $ git push origin master
 
-// stash 복원
+// stash 복원 및 삭제
 $ git stash apply
 $ git stash clear	// stash list clear 
 ``` 
+
+## 새로운 브랜치를 생성하여 stash 사용
+
+작업도중 새로운 이슈가 발생했을때 새로운 브랜치를 생성하여 작업하는 방법
+새로운 브랜치를 체크아웃 (브랜치명은 이슈번호로 처리하는게 좋다)
+
+```linux
+git checkout -b issue1 origin/master
+M       WebApplication1/Controllers/HomeController.cs
+M       WebApplication1/Lib/Class1.cs
+M       WebApplication1/Lib/Util.cs
+Branch issue1 set up to track remote branch master from origin.
+Switched to a new branch 'issue1'
+```
+
+stash 명령으로 숨김
+```linux
+
+```
 
 ## Trouble Shooting
 
