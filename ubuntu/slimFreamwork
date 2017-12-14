@@ -9,7 +9,7 @@
 # service nginx restart
 $ composer create-project slim/slim-skeleton www
 $ cd /home/www/
-$ chmod 777 -R logs
+$ chmod 777 -R /home/www/logs
 
 ~ phpoffice in phpexcel require
 $ cd /home/www
@@ -60,3 +60,47 @@ nmccm@localubuntu:/home/www$ cat composer.json
     }
 
 }
+
+── www
+    ├── composer.json
+    ├── composer.lock
+    ├── CONTRIBUTING.md
+    ├── docker-compose.yml
+    ├── logs
+    │   ├── app.log
+    │   └── README.md
+    ├── phpunit.xml
+    ├── public
+    │   ├── 98.sample.xlsx
+    │   └── index.php
+    ├── README.md
+    ├── src
+    │   ├── Ctrl
+    │   │   └── Cms.php
+    │   ├── dependencies.php
+    │   ├── Init.php
+    │   ├── middleware.php
+    │   ├── routes.php
+    │   ├── settings.php
+    │   └── Traits
+    │       └── Func.php
+    ├── templates
+    │   └── index.phtml
+    ├── tests
+    │   └── Functional
+    │       ├── BaseTestCase.php
+    │       └── HomepageTest.php
+    └── vendor
+        ├── autoload.php
+        ├── bin
+        │   └── phpunit -> ../phpunit/phpunit/phpunit
+        ├── composer
+        │   ├── autoload_classmap.php
+        │   ├── autoload_files.php
+        │   ├── autoload_namespaces.php
+        │   ├── autoload_psr4.php
+        │   ├── autoload_real.php
+        │   ├── autoload_static.php
+        │   ├── ClassLoader.php
+        │   ├── installed.json
+        │   └── LICENSE
