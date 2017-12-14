@@ -1,0 +1,6 @@
+# mkdir /home/www
+# cd /home/
+# chown nmccm.nmccm -R www
+# curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+
+$ composer create-project slim/slim-skeleton www
