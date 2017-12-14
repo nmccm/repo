@@ -2,5 +2,11 @@
 # cd /home/
 # chown nmccm.nmccm -R www
 # curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-
+# vi /etc/nginx/sites-available/default
+	before 	: root /home/www
+	after 	: root /home/www/public
+# cd /root/
+# service nginx restart
 $ composer create-project slim/slim-skeleton www
+$ cd /home/www/
+$ chmod 777 -R logs
