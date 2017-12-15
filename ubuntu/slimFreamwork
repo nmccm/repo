@@ -15,6 +15,7 @@ $ chmod 777 -R /home/www/logs
 $ cd /home/www
 $ composer require phpoffice/phpexcel
 
+~ 반드시 composer.json 을 수정해주어야 한다.
 ~ composer.json
 nmccm@localubuntu:/home/www$ cat composer.json
 {
