@@ -1,0 +1,11 @@
+1. puttygen 을 실행
+2. 오른쪽 하단의 "Generate" 클릭 (프로그래스바가 진행이 안될때마다 마우스를 조금씩 움직여준다)
+	- Parameters 는 SSH-2 RSA 선택하고
+	- Number of bits in a generated key: 2048 로 설정
+3. Key fingerprint 는 그대로 둔다.
+4. Key comment 는 구글 클라우드 브라우저 ssh 접속하면 호스트명 옆에 사용된 문자열
+	ex) nmccm77@gmail.com 계정을 만들고, 해당 계정으로 GCP 를 연결, 그리고 dev 라는 인스턴스를 만들었다면 nmccm77@dev$ 라고 뜰것이다. Key comment 에 적어야 될 내용이 "nmccm77" 이다. 
+5. Key passphrase, Comfirm passphrase 는 비밀번호이다. 선택사항이다.
+6. Save private key 를 눌러 저장
+7. 브라우저로 GCP 접속한 후 [Compute Engine] -> [메타데이터] -> [SSH 키] 선택
+8. [수정] -> [항목추가] 선택 후 putty key generator 최 상단 "Public key for pasting into OpenSSH authorized_keys file: 아래의 내용을 복사하여 붙여넣고 저장

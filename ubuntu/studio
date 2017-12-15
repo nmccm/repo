@@ -1,0 +1,45 @@
+~ clock dependencies
+# apt-get update
+# apt-get install xview-clients
+# apt-get install rdate
+# apt-get update
+
+~ date check & date setting
+# date (change by UTC -> KST)
+# ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+
+~ 래드햇의 ntsysv 와 비슷한 기능
+# apt-get install rcconf 
+# apt-get update
+
+~ mariadb install
+# apt-get install mariadb-server mariadb-client
+# ps -ef | grep mysql
+
+~ change mariadb root password
+# mysql mysql
+DB> show databases;
+DB> use mysql;
+DB> select * from user;
+DB> update user set Password = password('1234');
+DB> FLUSH PRIVILEGES;
+DB> quit;
+# mysql_secure_installation 
+
+Enter current password for root (enter for none): (현재 패스워드 입력)
+Change the root password? [Y/n] n
+Remove anonymous users? [Y/n] y
+Disallow root login remotely? [Y/n] n
+Remove test database and access to it? [Y/n] n
+Reload privilege tables now? [Y/n] y
+
+~ nginx install
+# apt-get update
+# apt-get install nginx
+
+~ php install
+# apt-get update
+# apt-get install php7.0
+# apt-get install php7.0-mysql
+# apt-get install php7.0-fpm php7.0-xml php7.0-mbstring php7.0-zip php7.0-gd zip
+
