@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="kr">
+ <head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <style> 
+	.tt { 
+		position: relative; 
+		display: inline-block; 
+		border-bottom: 2px dotted Sienna; 
+		background-color: yellow; 
+	} 
+	.tt .tt-text { 
+		visibility: hidden; 
+		width: 200px; 
+		/*background-color: Indigo;*/
+		background-color: black; 
+		/*color: Yellow;*/
+		color: White; 
+		text-align: center; 
+		border-radius: 10px; 
+		padding: 10px 5px; 
+		position: absolute; 
+		z-index: 1; 
+		top: 200%; 
+		left: 50%; 
+		margin-left: -105px; 
+	} 
+	.tt .tt-text:after { 
+		content: ""; 
+		position: absolute; 
+		bottom: 100%; 
+		left: 50%; 
+		margin-left: -10px; 
+		border-width: 10px; 
+		border-style: solid; 
+		border-color: transparent transparent Indigo transparent; 
+	} 
+	.tt:hover .tt-text { 
+		visibility: visible; 
+	} 
+ </style>
+ </head>
+
+ <body>
+   <h3>가나다라</h3> <div>이거슨 바로 !!!  <p class="tt">응가 <span class="tt-text">메롱 </span></p> </div>
+
+ </body>
+</html>
