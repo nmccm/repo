@@ -1,10 +1,11 @@
 date : 2017-12-15
 slim framework 3.0
 
+~ composer install
+# curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 # mkdir /home/www
 # cd /home/
 # chown nmccm.nmccm -R www
-# curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 # vi /etc/nginx/sites-available/default
 	before 	: root /home/www
 	after 	: root /home/www/public
@@ -18,8 +19,7 @@ $ chmod 777 -R /home/www/logs
 $ cd /home/www
 $ composer require phpoffice/phpexcel
 
-~ 반드시 composer.json 을 수정해주어야 한다.
-~ composer.json
+~ modify composer.json
 nmccm@localubuntu:/home/www$ cat composer.json
 {
     "name": "slim/slim-skeleton",

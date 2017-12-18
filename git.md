@@ -72,6 +72,9 @@ $ git config color.ui 'auto'				// color 설정
 $ git commit -m <msg>										// commit with msg
 $ git remote add origin note@1.1.1.1:/home/note/sample.git 	// remote 저장소 등록
 $ git push origin master
+
+// SSH 기본포트가 아닌 다른 포트로 ssh 접속할때 
+$ git remote add origin ssh://note@35.196.111.214:2020/home/note/sample.git
 ```
 
 ## 등록된 원격 저장소 확인 및 삭제

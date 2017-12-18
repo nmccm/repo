@@ -1,0 +1,10 @@
+~ A 서버가 Local Ubuntu Server, B 서버가 GCP. A 서버에 *.ppk 파일 업로드 (업로드를 /home/nmccm/studio_dev.ppk 로 업로드 했다고 가정한다면..)
+
+# sudo apt-get install putty-tools
+# puttygen studio_dev.ppk -O private-openssh -o studio_dev.pem
+# cd /home/nmccm/.ssh
+# cp -a /home/nmccm/studio_dev.pem .
+# chmod 400 studio_dev.pem
+
+~ connection GCP
+# ssh -i /home/nmccm/.ssh/studio_dev.pem ubuntu@111.111.111.111
