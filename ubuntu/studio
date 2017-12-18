@@ -24,8 +24,8 @@ DB> select * from user;
 DB> update user set Password = password('1234');
 DB> FLUSH PRIVILEGES;
 DB> quit;
-# mysql_secure_installation 
 
+# mysql_secure_installation
 Enter current password for root (enter for none): (현재 패스워드 입력)
 Change the root password? [Y/n] n
 Remove anonymous users? [Y/n] y
@@ -33,13 +33,73 @@ Disallow root login remotely? [Y/n] n
 Remove test database and access to it? [Y/n] n
 Reload privilege tables now? [Y/n] y
 
+~ mariadb remote connection setting
+# vi /etc/mysql/mariadb.conf.d/50-server.cnf
+# bind-address = 127.0.0.1 <-- 주석
+# service mysql restart
+
+~ 접속이 안될때 체크 
+{
+	# ufw status
+	# iptables -L 
+	# iptables -I INPUT 1 -p tcp --dport 3306 -j ACCEPT
+	
+	# tcpdump port 3306 -vvv -n
+	# telnet 0.0.0.0 3306
+	
+	DB> create user 'nmccm'@'%' identified by 'password1234';
+	DB> grant all privileges on test.* to nmccm@%;
+	DB> grant all privileges on mysql.* to nmccm@%;	
+}
+
 ~ nginx install
 # apt-get update
 # apt-get install nginx
+
+~ nginx setting
+# vi /etc/nginx/sites-available/default
+{
+	server {
+	    listen 80 default_server;
+	    listen [::]:80 default_server;
+	
+	    client_max_body_size 5M;
+	    root /var/www/html;
+	
+	    # Add index.php to the list if you are using PHP
+	    index index.html index.htm index.nginx-debian.html index.php;
+
+	    server_name _;
+	
+	    location / {
+			# First attempt to serve request as file, then
+            # as directory, then fall back to displaying a 404.
+            # try_files $uri $uri/ =404;
+            try_files $uri $uri/ /index.php$is_args$args;
+    	}
+
+    	location ~ \.php$ {
+            # With php7-fpm:
+            try_files $uri = 404;
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            include fastcgi_params;
+            # fastcgi_read_timeout 300;
+    	}
+	}
+}
+# service nginx restart
+# wget localhost
+# echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
+# wget http://localhost/phpinfo.php
+# rm -rf /var/www/html/phpinfo.php 
 
 ~ php install
 # apt-get update
 # apt-get install php7.0
 # apt-get install php7.0-mysql
 # apt-get install php7.0-fpm php7.0-xml php7.0-mbstring php7.0-zip php7.0-gd zip
+# apt-get update
 
