@@ -97,7 +97,7 @@ Deleted branch issue1 (was e59bd24).
 
 ## 원격 저장소로부터 새로운 브랜치 생성
 ```linux
-$ git branch -b <branch_name> origin/master
+$ git checkout -b <branch_name> origin/master
 ```
 
 ## 원격 저장소 복제
@@ -131,7 +131,7 @@ local master 브랜치 작업도중 새로운 일감을 처리해야될 경우 s
 ```linux
 $ vi master1		
 $ vi first			
-$ git status 
+$ git status -u // -u 옵션은 untracked 파일까지 모두 숨겨준다.
 On branch master
 Your branch is up-to-date with 'origin/master'.
 Changes not staged for commit:
@@ -147,7 +147,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 현재 상태를 stash 를 한다.
 
 ```linux
-$ git stash
+$ git stash -u
 Saved working directory and index state WIP on master: e711e9c temp commit
 HEAD is now at e711e9c temp commit
 ```
@@ -171,6 +171,7 @@ $ git stash list		// list 확인
 stash@{0}: WIP on master: e711e9c temp commit
 ```
 
+```linux
 // 새로운 이슈사항을 적용하고 commit & push
 $ vi first	// 새로운 이슈사항 처리
 $ git add first
@@ -180,6 +181,9 @@ $ git push origin master
 // stash 복원 및 삭제
 $ git stash apply
 $ git stash clear	// stash list clear 
+
+// clear 로 삭제되지 않을경우엔 drop 한다
+$ git stash drop
 ``` 
 
 ## 새로운 브랜치를 생성하여 stash 사용
@@ -196,9 +200,11 @@ Branch issue1 set up to track remote branch master from origin.
 Switched to a new branch 'issue1'
 ```
 
-stash 명령으로 숨김
+## 코멘트 작성시 여러줄 입력방법
 ```linux
-
+$ git commit -m '헬로우
+> 파인
+> 떙큐'
 ```
 
 ## Trouble Shooting
