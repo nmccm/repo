@@ -28,3 +28,25 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 MariaDB [mysql]> 
 ```
+
+## remote connection setting
+
+mariadb 5.2.0 부터는 인증시 unix_socket 이 기본적으로 사용된다. 이를 해결하기 위한 방법은 아래와 같이 처리한다.
+참고 URL : https://mariadb.com/kb/en/library/authentication-plugin-unix-socket/
+
+```linux
+# mysql mysql
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 33
+Server version: 10.0.31-MariaDB-0ubuntu0.16.04.2 Ubuntu 16.04
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [mysql]> update user set Host = '%', plugin = 'mysql_native_password' where user = 'root' and Host = 'localhost';
+MariaDB [mysql]> FLUSH PRIVILEGES;
+```
