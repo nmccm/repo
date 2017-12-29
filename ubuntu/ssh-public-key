@@ -1,0 +1,19 @@
+패스워드없이 로그인할 대상 서버에 접속
+
+# adduser nn3
+# passwd nn3
+# sudo -i -u nn3
+$ ssh-keygen -t rsa
+$ touch authorized_keys
+$ cat id_rsa.pub >> authorized_keys
+$ cat authorized_keys
+$ chmod 700 ~/.ssh
+$ chmod 644 ~/.ssh/*
+$ chmod 600 ~/.ssh/id_rsa
+
+개인 ubuntu pc 에 로그인
+
+$ /home/nmccm/.ssh/
+$ scp -P22 nn3@1.1.1.1:/home/nn3/.ssh/id_rsa .
+
+파일이 생성되었는지 확인하고 ssh로 로그인 시도
