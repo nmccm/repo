@@ -19,6 +19,9 @@ $ chmod 777 -R /home/www/logs
 $ cd /home/www
 $ composer require phpoffice/phpexcel
 
+~ translator
+$ composer require symfony/translation
+
 ~ modify composer.json
 nmccm@localubuntu:/home/www$ cat composer.json
 {
