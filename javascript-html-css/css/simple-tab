@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>simple-tab</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Expires" content="-1"> 
+    <meta http-equiv="Pragma" content="no-cache"> 
+    <meta http-equiv="Cache-Control" content="No-Cache">
+    
+	<style type="text/css">	
+		.tab-page { display:none; }
+		.active-page { display: block; }
+		.outer-wrap { width:100%; margin: 0 auto; }
+		.clear-float { clear:both; }
+		ul.simple-tabs { width:100%; margin: 0; padding: 0; }
+		ul.simple-tabs li { float:left; width:130px; height:44px; /*margin-bottom: 30px;*/ list-style-type: none; text-align: center; line-height:44px; }
+		ul.simple-tabs li:hover { background-color: #e8e8e8; border-top:3px solid #a1a1a1; cursor:pointer; border-left:1px solid #cccccc; border-right:1px solid #cccccc; }
+		ul.simple-tabs li.active { background-color: #e6e6e6; color:#000000; border-top:3px solid #a1a1a1; border-left:1px solid #cccccc; border-right:1px solid #cccccc; }
+		.tab-page { width:100%; -moz-box-sizing: border-box; box-sizing: border-box; border: thin #cccccc solid; }
+		.ninety-percent-pad { width:98%; margin:25px auto; }         
+	</style>
+</head>
+<body>
+ 
+<div class="outer-wrap">
+	<ul class="simple-tabs" id="simple-tabs">
+		<li class="tab1 active" >tab1</li>
+		<li class="tab2">tab2</li>                                
+        <li class="tab3">tab3</li>
+    </ul>                            
+    <div class="clear-float"></div>    
+    
+    <div id="tab1" class="tab-page active-page">                            
+		<div class="ninety-percent-pad">
+			<div>tab1</div>
+		</div>
+	</div>
+
+    <div id="tab2" class="tab-page">                            
+		<div class="ninety-percent-pad">
+			<div>tab2</div>
+		</div>
+	</div>
+
+    <div id="tab3" class="tab-page">                            
+		<div class="ninety-percent-pad">
+			<div>tab3</div>
+		</div>
+	</div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <!--                 	
+	<script src="/js/jquery-3.2.1.js"></script>
+	-->			                    				                    				
+	<script type="text/javascript">
+	var SimpleTabs = function (elem) {
+	    //get tab objects and store as pane + tab
+	    var activeTabObject;
+	    
+	    var TabObject = function () {
+	        var self = this;
+	        this.tab; //element
+	        this.pane; //element
+	        this.setClick = function () {
+	            $(self.tab).click(function () {
+	                self.showThisTab();
+	            });
+	        };
+	        
+	        this.showThisTab = function () {
+	            if (self !== activeTabObject) {
+	                //change the tab page and update the active tab
+	                $(activeTabObject.pane).removeClass('active-page');
+	                $(activeTabObject.tab).removeClass('active');
+	                $(self.pane).addClass('active-page');
+	                $(self.tab).addClass('active');
+	                activeTabObject = self;
+	            }
+	        };
+	        
+	    };
+	    
+	    $.each(elem.children(), function (id,val){
+	        var tab = new TabObject();
+	        tab.tab = val;
+	        var classString = $(val).attr('class');
+	        var className = classString.split(' ')[0];
+	        tab.pane = $('#' + className);
+	        tab.setClick();
+	        if (classString.indexOf('active') > -1) {
+	            activeTabObject = tab;
+	        }
+	    });
+	    
+	};
+	</script>
+	<script type="text/javascript">
+		$(function() 
+		{
+			new SimpleTabs($('#simple-tabs'));
+		});
+	</script>
+	
+</body>
+</html>
