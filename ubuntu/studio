@@ -22,6 +22,7 @@ DB> show databases;
 DB> use mysql;
 DB> select * from user;
 DB> update user set Password = password('1234');
+DB> GRANT ALL PRIVILEGES ON *.* TO root@'192.168.1.1' IDENTIFIED BY '1234' WITH GRANT OPTION;
 DB> FLUSH PRIVILEGES;
 DB> quit;
 
