@@ -56,8 +56,17 @@ Reload privilege tables now? [Y/n] y
 ~ nginx install
 # apt-get update
 # apt-get install nginx
+# service nginx restart
 
-~ nginx setting
+~ php install
+# apt-get update
+# apt-get install php7.0
+# apt-get install php7.0-mysql
+# apt-get install php7.0-fpm php7.0-xml php7.0-mbstring php7.0-zip php7.0-gd zip
+# apt-get update
+
+
+~ nginx and php config
 # vi /etc/nginx/sites-available/default
 {
 	server {
@@ -91,16 +100,9 @@ Reload privilege tables now? [Y/n] y
     	}
 	}
 }
-# service nginx restart
+
+~ php install check
 # wget localhost
 # echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
 # wget http://localhost/phpinfo.php
 # rm -rf /var/www/html/phpinfo.php 
-
-~ php install
-# apt-get update
-# apt-get install php7.0
-# apt-get install php7.0-mysql
-# apt-get install php7.0-fpm php7.0-xml php7.0-mbstring php7.0-zip php7.0-gd zip
-# apt-get update
-
