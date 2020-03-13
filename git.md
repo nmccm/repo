@@ -216,3 +216,8 @@ $ git config –-global core.autocrlf true
 $ git config –-global core.autocrlf input
 $ git config –-global core.autocrlf false
 ```
+
+
+## image test
+
+!(sample_image)(https://github.com/nmccm/repo/blob/master/cap8.png)
