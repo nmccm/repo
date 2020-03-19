@@ -4,6 +4,7 @@
 # passwd nn3
 # sudo -i -u nn3
 $ ssh-keygen -t rsa
+$ cd .ssh
 $ touch authorized_keys
 $ cat id_rsa.pub >> authorized_keys
 $ cat authorized_keys
