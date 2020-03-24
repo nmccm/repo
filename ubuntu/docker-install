@@ -1,0 +1,49 @@
+$sudo apt update
+$sudo apt install apt-transport-https ca-certificates curl software-properties-common
+$curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+$sudo apt update
+
+$apt-cache policy docker-ce
+
+docker-ce:
+  Installed: (none)
+  Candidate: 18.06.1~ce~3-0~ubuntu
+  Version table:
+     18.06.1~ce~3-0~ubuntu 500
+        500 https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
+     18.06.0~ce~3-0~ubuntu 500
+        500 https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
+     18.03.1~ce~3-0~ubuntu 500
+        500 https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
+
+$ sudo apt install docker-ce
+$ systemctl status docker
+● docker.service - Docker Application Container Engine
+   Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+   Active: active (running) since Tue 2020-03-24 05:45:23 UTC; 8min ago
+     Docs: https://docs.docker.com
+ Main PID: 4796 (dockerd)
+    Tasks: 12
+   CGroup: /system.slice/docker.service
+           ├─4796 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+           └─6039 /usr/bin/unpigz -d -c
+
+Mar 24 05:45:22 ubuntu-dev dockerd[4796]: time="2020-03-24T05:45:22.583149077Z" level=info msg="Default bridge (docker0) is assigned with an IP address 172.17.0.0/16. Daemon option --bip can be used
+Mar 24 05:45:22 ubuntu-dev dockerd[4796]: time="2020-03-24T05:45:22.800354325Z" level=info msg="Loading containers: done."
+Mar 24 05:45:22 ubuntu-dev dockerd[4796]: time="2020-03-24T05:45:22.923341064Z" level=info msg="Docker daemon" commit=afacb8b7f0 graphdriver(s)=overlay2 version=19.03.8
+Mar 24 05:45:22 ubuntu-dev dockerd[4796]: time="2020-03-24T05:45:22.927347146Z" level=info msg="Daemon has completed initialization"
+Mar 24 05:45:23 ubuntu-dev systemd[1]: Started Docker Application Container Engine.
+Mar 24 05:45:23 ubuntu-dev dockerd[4796]: time="2020-03-24T05:45:23.033258494Z" level=info msg="API listen on /var/run/docker.sock"
+Mar 24 05:52:28 ubuntu-dev dockerd[4796]: time="2020-03-24T05:52:28.396083697Z" level=info msg="Attempting next endpoint for pull after error: failed to register layer: Error processing tar file(exi
+Mar 24 05:52:28 ubuntu-dev dockerd[4796]: time="2020-03-24T05:52:28.432242253Z" level=info msg="Layer sha256:2343d595145904d21c105737d265dbf90336504b0159e0ad321207e2386def3a cleaned up"
+Mar 24 05:52:28 ubuntu-dev dockerd[4796]: time="2020-03-24T05:52:28.609361414Z" level=info msg="Layer sha256:db26469e83eee1bf11d2a8994f6a579a9e30f5e0cba4675e2db768fb5d9ef360 cleaned up"
+Mar 24 05:52:29 ubuntu-dev dockerd[4796]: time="2020-03-24T05:52:29.010476060Z" level=info msg="Layer sha256:2c995a2087c1d96cf0dff249abef60efa99b33d4c27c373105168d11db8e930f cleaned up"
+
+$ ps -ef | grep docker
+root      4796     1  5 05:45 ?        00:00:28 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+root      6056  1459  0 05:54 pts/0    00:00:00 grep --color=auto docker
+
+$ docker --version
+Docker version 19.03.8, build afacb8b7f0
+
