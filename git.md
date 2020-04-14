@@ -86,6 +86,32 @@ $ git remote -v
 $ git remote remove origin
 ```
 
+## 과거 커밋(과거 리비전)으로 돌아가기
+
+등록된 원격 저장소 확인 및 삭제 방법 (remote add 시에 origin 으로 이름을 붙였기 때문에 삭제도 origin)
+
+```linux
+$ git log
+commit 3a514296ef686ea274bee53f5c1a3daea1b3d1e5 (HEAD -> master, origin/master)
+Author: webMain <master@domain.com>
+Date:   Tue Apr 14 16:07:54 2020 +0900
+
+    add test source
+    brbr
+
+commit 15fe2e67230f16364003f59e0c269164576f1df3
+Author: EC2 Default User <ec2-user@domain.localdomain>
+Date:   Tue Apr 14 14:31:13 2020 +0900
+
+    init 
+
+// 아래와 같이 처리하면 새로운 브런치를 만듬과 동시에 해당 브런치에 과거 커밋으로 돌아갈수 있다.
+$ git checkout -b 15fe2e67230f16364003f59e0c269164576f1df3
+
+// 원래 작업버전으로 돌아오려면 
+$ git checkout 3a514296ef686ea274bee53f5c1a3daea1b3d1e5
+```
+
 ## 브랜치 전체 리스트 확인 및 브랜치 이동 방법, 브랜치 삭제
 
 ```linux
