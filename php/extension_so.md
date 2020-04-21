@@ -98,3 +98,39 @@ ZEND_TSRMLS_CACHE_EXTERN()
 
 #endif
 ```
+
+```linux	
+# vi hash_entry.c
+
+const zend_function_entry hash_entry_functions[] = {
+        PHP_FE(confirm_hash_entry_compiled,     NULL)
+        PHP_FE(hash_entry_func,     NULL)       // add
+        PHP_FE_END
+};
+
+zend_module_entry hash_entry_module_entry = {
+        STANDARD_MODULE_HEADER,
+        PHP_HASH_ENTRY_EXTNAME,
+        hash_entry_functions,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        PHP_HASH_ENTRY_VERSION,
+        STANDARD_MODULE_PROPERTIES
+};
+
+PHP_FUNCTION(hash_entry_func)
+{
+    char* s;
+    long len;
+
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &s, &len) == FAILURE) {
+        RETURN_NULL();
+    }
+
+    php_printf("String(%d) : %s\n", len, s);
+}
+
+```
