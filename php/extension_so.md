@@ -228,19 +228,19 @@ configure: creating ./config.status
 config.status: creating config.h
 
 # make
-/bin/sh /home/ec2-user/gabia/php-7.0.33/ext/hash_entry/libtool --mode=compile cc -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -I. -I/home/ec2-user/gabia/php-7.0.33/ext/hash_entry -DPHP_ATOM_INC -I/home/ec2-user/gabia/php-7.0.33/ext/hash_entry/include -I/home/ec2-user/gabia/php-7.0.33/ext/hash_entry/main -I/home/ec2-user/gabia/php-7.0.33/ext/hash_entry -I/usr/local/php/include/php -I/usr/local/php/include/php/main -I/usr/local/php/include/php/TSRM -I/usr/local/php/include/php/Zend -I/usr/local/php/include/php/ext -I/usr/local/php/include/php/ext/date/lib  -DHAVE_CONFIG_H  -g -O2   -c /home/ec2-user/gabia/php-7.0.33/ext/hash_entry/hash_entry.c -o hash_entry.lo
- cc -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -I. -I/home/ec2-user/gabia/php-7.0.33/ext/hash_entry -DPHP_ATOM_INC -I/home/ec2-user/gabia/php-7.0.33/ext/hash_entry/include -I/home/ec2-user/gabia/php-7.0.33/ext/hash_entry/main -I/home/ec2-user/gabia/php-7.0.33/ext/hash_entry -I/usr/local/php/include/php -I/usr/local/php/include/php/main -I/usr/local/php/include/php/TSRM -I/usr/local/php/include/php/Zend -I/usr/local/php/include/php/ext -I/usr/local/php/include/php/ext/date/lib -DHAVE_CONFIG_H -g -O2 -c /home/ec2-user/gabia/php-7.0.33/ext/hash_entry/hash_entry.c  -fPIC -DPIC -o .libs/hash_entry.o
-/bin/sh /home/ec2-user/gabia/php-7.0.33/ext/hash_entry/libtool --mode=link cc -DPHP_ATOM_INC -I/home/ec2-user/gabia/php-7.0.33/ext/hash_entry/include -I/home/ec2-user/gabia/php-7.0.33/ext/hash_entry/main -I/home/ec2-user/gabia/php-7.0.33/ext/hash_entry -I/usr/local/php/include/php -I/usr/local/php/include/php/main -I/usr/local/php/include/php/TSRM -I/usr/local/php/include/php/Zend -I/usr/local/php/include/php/ext -I/usr/local/php/include/php/ext/date/lib  -DHAVE_CONFIG_H  -g -O2   -o hash_entry.la -export-dynamic -avoid-version -prefer-pic -module -rpath /home/ec2-user/gabia/php-7.0.33/ext/hash_entry/modules  hash_entry.lo
+/bin/sh /home/ec2-user/work/php-7.0.33/ext/hash_entry/libtool --mode=compile cc -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -I. -I/home/ec2-user/work/php-7.0.33/ext/hash_entry -DPHP_ATOM_INC -I/home/ec2-user/work/php-7.0.33/ext/hash_entry/include -I/home/ec2-user/work/php-7.0.33/ext/hash_entry/main -I/home/ec2-user/work/php-7.0.33/ext/hash_entry -I/usr/local/php/include/php -I/usr/local/php/include/php/main -I/usr/local/php/include/php/TSRM -I/usr/local/php/include/php/Zend -I/usr/local/php/include/php/ext -I/usr/local/php/include/php/ext/date/lib  -DHAVE_CONFIG_H  -g -O2   -c /home/ec2-user/work/php-7.0.33/ext/hash_entry/hash_entry.c -o hash_entry.lo
+ cc -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -I. -I/home/ec2-user/work/php-7.0.33/ext/hash_entry -DPHP_ATOM_INC -I/home/ec2-user/work/php-7.0.33/ext/hash_entry/include -I/home/ec2-user/work/php-7.0.33/ext/hash_entry/main -I/home/ec2-user/work/php-7.0.33/ext/hash_entry -I/usr/local/php/include/php -I/usr/local/php/include/php/main -I/usr/local/php/include/php/TSRM -I/usr/local/php/include/php/Zend -I/usr/local/php/include/php/ext -I/usr/local/php/include/php/ext/date/lib -DHAVE_CONFIG_H -g -O2 -c /home/ec2-user/work/php-7.0.33/ext/hash_entry/hash_entry.c  -fPIC -DPIC -o .libs/hash_entry.o
+/bin/sh /home/ec2-user/work/php-7.0.33/ext/hash_entry/libtool --mode=link cc -DPHP_ATOM_INC -I/home/ec2-user/work/php-7.0.33/ext/hash_entry/include -I/home/ec2-user/work/php-7.0.33/ext/hash_entry/main -I/home/ec2-user/work/php-7.0.33/ext/hash_entry -I/usr/local/php/include/php -I/usr/local/php/include/php/main -I/usr/local/php/include/php/TSRM -I/usr/local/php/include/php/Zend -I/usr/local/php/include/php/ext -I/usr/local/php/include/php/ext/date/lib  -DHAVE_CONFIG_H  -g -O2   -o hash_entry.la -export-dynamic -avoid-version -prefer-pic -module -rpath /home/ec2-user/work/php-7.0.33/ext/hash_entry/modules  hash_entry.lo
 cc -shared  .libs/hash_entry.o   -Wl,-soname -Wl,hash_entry.so -o .libs/hash_entry.so
 creating hash_entry.la
 (cd .libs && rm -f hash_entry.la && ln -s ../hash_entry.la hash_entry.la)
-/bin/sh /home/ec2-user/gabia/php-7.0.33/ext/hash_entry/libtool --mode=install cp ./hash_entry.la /home/ec2-user/gabia/php-7.0.33/ext/hash_entry/modules
-cp ./.libs/hash_entry.so /home/ec2-user/gabia/php-7.0.33/ext/hash_entry/modules/hash_entry.so
-cp ./.libs/hash_entry.lai /home/ec2-user/gabia/php-7.0.33/ext/hash_entry/modules/hash_entry.la
-PATH="$PATH:/sbin" ldconfig -n /home/ec2-user/gabia/php-7.0.33/ext/hash_entry/modules
+/bin/sh /home/ec2-user/work/php-7.0.33/ext/hash_entry/libtool --mode=install cp ./hash_entry.la /home/ec2-user/work/php-7.0.33/ext/hash_entry/modules
+cp ./.libs/hash_entry.so /home/ec2-user/work/php-7.0.33/ext/hash_entry/modules/hash_entry.so
+cp ./.libs/hash_entry.lai /home/ec2-user/work/php-7.0.33/ext/hash_entry/modules/hash_entry.la
+PATH="$PATH:/sbin" ldconfig -n /home/ec2-user/work/php-7.0.33/ext/hash_entry/modules
 ----------------------------------------------------------------------
 Libraries have been installed in:
-   /home/ec2-user/gabia/php-7.0.33/ext/hash_entry/modules
+   /home/ec2-user/work/php-7.0.33/ext/hash_entry/modules
 
 If you ever happen to want to link against installed libraries
 in a given directory, LIBDIR, you must either use libtool, and
@@ -289,6 +289,7 @@ hash_entry
 test.php 파일을 만든 후 테스트 소스를 작성하여 실행
 
 ```php
+<?php
 $module = 'hash_entry';        
 $modules = explode(' ', $module);
 
