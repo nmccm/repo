@@ -43,3 +43,58 @@ code and repeat the last two steps as often as necessary.
 
 # cd hash_entry
 ```
+
+config.m4, php_hash_entry.h, hash_entry.c 파일을 수정해준다.
+		
+```linux	
+# vi config.m4			
+
+dnl PHP_ARG_WITH(hash_entry, for hash_entry support,
+dnl Make sure that the comment is aligned:
+dnl [  --with-hash_enty             Include hash_entry support])
+
+dnl Otherwise use enable:
+
+PHP_ARG_ENABLE(hash_entry, whether to enable hash_entry support,
+[  --enable-hash_entry           Enable hash_entry support])
+
+if test "$PHP_HASH_ENTRY" != "no"; then
+        AC_DEFINE(HAVE_HASH_ENTRY, 1, [Whether you have hash_entry])
+  PHP_NEW_EXTENSION(hash_entry, hash_entry.c, $ext_shared,, -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1)
+fi
+```
+
+```linux	
+# vi php_hash_entry.h
+
+#ifndef PHP_HASH_ENTRY_H
+#define PHP_HASH_ENTRY_H
+#define PHP_MYEXT_EXTNAME "hash_entry"
+
+PHP_FUNCTION(hash_entry_func);
+
+extern zend_module_entry hash_entry_module_entry;
+#define phpext_hash_entry_ptr &hash_entry_module_entry
+
+#define PHP_HASH_ENTRY_VERSION "0.1.0" 
+
+#ifdef PHP_WIN32
+#       define PHP_HASH_ENTRY_API __declspec(dllexport)
+#elif defined(__GNUC__) && __GNUC__ >= 4
+#       define PHP_HASH_ENTRY_API __attribute__ ((visibility("default")))
+#else
+#       define PHP_HASH_ENTRY_API
+#endif
+
+#ifdef ZTS
+#include "TSRM.h"
+#endif
+
+#define HASH_ENTRY_G(v) ZEND_MODULE_GLOBALS_ACCESSOR(hash_entry, v)
+
+#if defined(ZTS) && defined(COMPILE_DL_HASH_ENTRY)
+ZEND_TSRMLS_CACHE_EXTERN()
+#endif
+
+#endif
+```
