@@ -110,7 +110,7 @@ const zend_function_entry hash_entry_functions[] = {
 
 zend_module_entry hash_entry_module_entry = {
         STANDARD_MODULE_HEADER,
-        PHP_HASH_ENTRY_EXTNAME,
+        "hash_entry",
         hash_entry_functions,
         NULL,
         NULL,
