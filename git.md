@@ -233,6 +233,21 @@ $ git commit -m '헬로우
 > 떙큐'
 ```
 
+## 이미 GIT 서버에 올라간 파일을 더이상 추적(관리)되지 않도록 하는 방법
+```linux
+$ git update-index --assume-unchanged [file]
+```
+
+## 추적되지 않는 파일 리스트 확인
+```linux
+$ git ls-files -v | grep ^h
+```
+
+## 다시 추적되도록 하는 방법
+```linux
+$ git update-index --no-assume-unchanged [file]
+```
+
 ## Trouble Shooting
 
 만약 아래와 같은 에러가 발생하면 윈도우의 CR (carriage-Return) 때문에 발생하는 문제이므로 다음과 같이 설정하자.
