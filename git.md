@@ -250,7 +250,7 @@ $ git update-index --no-assume-unchanged [file]
 
 ## Trouble Shooting
 
-만약 아래와 같은 에러가 발생하면 윈도우의 CR (carriage-Return) 때문에 발생하는 문제이므로 다음과 같이 설정하자.
+만약 아래와 같은 에러가 발생하면 윈도우의 CR (carriage-Return) 때문에 발생하는 문제이므로 다음과 같이 설정하자.   
 
 ```linux
 $ git config –-global core.autocrlf true
