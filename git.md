@@ -118,6 +118,7 @@ $ git checkout 3a514296ef686ea274bee53f5c1a3daea1b3d1e5
 $ git branch -a
 $ git checkout <branch_name>
 $ git branch -d <branch_name>	// 브랜치를 이동후 삭제하여야 한다.
+$ git branch -D <branch_name>   // 브랜치 강제 삭제
 Deleted branch issue1 (was e59bd24).
 ```
 
