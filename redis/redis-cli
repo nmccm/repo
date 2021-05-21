@@ -1,3 +1,5 @@
+redis-cli reference site : http://redisgate.kr/redis/command/strings.php
+
 // db 정보 확인 (db=0 확인)
 $ redis-cli
 127.0.0.1:6379> client list
