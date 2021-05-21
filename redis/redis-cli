@@ -1,0 +1,30 @@
+// db 정보 확인 (db=0 확인)
+$ redis-cli
+127.0.0.1:6379> client list
+id=17 addr=127.0.0.1:56762 fd=10 name= age=20656 idle=205 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=18446744073709522865 events=r cmd=NULL
+id=18 addr=127.0.0.1:56763 fd=9 name= age=20656 idle=10170 flags=N db=0 sub=0 psub=1 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=psubscribe
+id=41 addr=127.0.0.1:64999 fd=11 name= age=14543 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=18446744073709522865 events=r cmd=client
+
+// 현재 디비에 모든 키 반환
+127.0.0.1:6379> keys *
+1) "caddyGuestSnapshotData"
+2) "CaddyGuestSnapshotData:20210521:VALLEY:1:0800"
+3) "CaddyGuestSnapshotData:20210521:LAKE:1:0830"
+4) "CaddyGuestSnapshotData:20210521:LAKE:1:0642"
+5) "test2"
+6) "CaddyGuestSnapshotData:20210521:LAKE:1:0648"
+7) "helloworld"
+8) "CaddyGuestSnapshotData:20210521:SILK:2:1000"
+9) "test"
+
+// set data (key:value)
+127.0.0.1:6379> set nmccm 'hello world'
+OK
+
+// get data
+127.0.0.1:6379> get nmccm
+"hello world"
+
+// delete data
+127.0.0.1:6379> del nmccm
+(integer) 1
