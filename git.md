@@ -249,6 +249,14 @@ $ git ls-files -v | grep ^h
 $ git update-index --no-assume-unchanged [file]
 ```
 
+## remote branch 갱신 및 브랜치 재생성 방법
+```linux
+dk_game_monitor>git checkout master
+master>git branch -D release
+master>git fetch --prune origin
+master>git checkout -t origin/release
+```
+
 ## Trouble Shooting
 
 만약 아래와 같은 에러가 발생하면 윈도우의 CR (carriage-Return) 때문에 발생하는 문제이므로 다음과 같이 설정하자.   
