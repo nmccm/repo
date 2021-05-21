@@ -1,0 +1,61 @@
+
+    // dk : 레디스에 데이터 저장 (배치표 인쇄를 실행한 데이터만 저장)
+    public function ajaxSaveGuestSnapshot(Request $request) {
+        try {
+            // 210521 dk : key format = CaddyGuestSnapshotData.YYYYMMDD.course.part.teeoff
+            $redisSaveKeyPrefix = config('constants.REDIS_KEYS.CADDY_GUEST');
+            $redisSaveKey = $redisSaveKeyPrefix . ':' . date('Ymd');
+            $redisValue = new \stdClass();
+            if(!isset($request['guestSnapshotData']) || empty($request['guestSnapshotData'])) {
+                throw new \Exception('can not find guestSnapshotData');
+            }
+            foreach($request['guestSnapshotData'] as $key => $value) {
+                if(strpos($key, '_') !== false) {
+                    $keys = explode('_', $key);
+                    foreach($keys as $_key) {
+                        $redisSaveKey .= ':' . $_key;
+                    }
+                }
+                $redisValue = json_encode($value);
+            }
+//            throw new \Exception('working....');
+            Redis::set($redisSaveKey, $redisValue, 'EX', (((60 * 60) * 24) * 2)); // 2틀만 저장
+            $data = Redis::get($redisSaveKey);
+            if(empty($data)) {
+                throw new \Exception('data save failed');
+            }
+            return Response()->json([
+                'code' => true,
+                'msg' => 'success',
+            ]);
+        }
+        catch(\Exception $e) {
+            return Response()->json([
+                'code' => false,
+                'msg' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    // dk : 래디스에 데이터 삭제
+    public function ajaxRemoveGuestSnapshot(Request $request) {
+        try {
+            if(!$request['key'] || empty($request['key'])) {
+                throw new \Exception('can not find key');
+            }
+            $redisKey = config('constants.REDIS_KEYS.CADDY_GUEST');
+            $redisKey .= ':' . date('Ymd') . ':' . str_replace('_', ':', $request['key']);
+            // Redis::del(Redis::keys($redisKey . ':*'));
+            Redis::del($redisKey);
+            return Response()->json([
+                'code' => true,
+                'msg' => 'success',
+            ]);
+        }
+        catch(\Exception $e) {
+            return Response()->json([
+                'code' => false,
+                'msg' => $e->getMessage(),
+            ]);
+        }
+    }
