@@ -270,4 +270,4 @@ $ git config –-global core.autocrlf false
 
 ## image test
 
-!(sample_image)(https://github.com/nmccm/repo/blob/master/cap8.png)
+![sample_image](https://github.com/nmccm/repo/blob/master/cap8.png)
