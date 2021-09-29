@@ -86,6 +86,14 @@ $ git remote -v
 $ git remote remove origin
 ```
 
+## 원격저장소 갱신
+
+원격 저장소에는 존재하지만 내 작업공간에 없는 브랜치목록 갱신 방법
+
+```linux
+$ git fetch --prune origin
+```
+
 ## 과거 커밋(과거 리비전)으로 돌아가기
 
 등록된 원격 저장소 확인 및 삭제 방법 (remote add 시에 origin 으로 이름을 붙였기 때문에 삭제도 origin)
