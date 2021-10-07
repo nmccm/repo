@@ -1,0 +1,45 @@
+        Route::get('/tmpFileDownload', function() {
+
+            log::debug("start");
+//            $filename = 'a.txt';
+//            Storage::disk('public')->put($filename, '1111');
+//            $content = Storage::disk('public')->get($filename);
+//            log::debug($content);
+
+            $file_url = 'http://localhost:8888/tablet/1/download/0.0.3';
+
+//            $ch = curl_init();
+//            curl_setopt($ch, CURLOPT_URL, $file_url);
+//            curl_setopt($ch, CURLOPT_NOBODY, true);
+//            $res = curl_exec ($ch);
+//            $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+//            curl_close($ch);
+//            log::debug('code : ' . $http_code);
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $file_url);
+            curl_setopt($ch, CURLOPT_VERBOSE, 1);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_AUTOREFERER, false);
+            curl_setopt($ch, CURLOPT_REFERER, "http://www.xcontest.org");
+            curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            $result = curl_exec($ch);
+            $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            if($http_code == 200) {
+
+
+//                log::debug($result);
+
+                $filename = 'test3.jpg';
+                Storage::disk('public')->put($filename, $result);
+                // $content = Storage::disk('public')->get($filename);
+                $content = storage_path('app/public/' . $filename);
+                return response()->download($content);
+
+            } else {
+                log::debug('error');
+            }
+        });
