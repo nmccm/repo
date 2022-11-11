@@ -1,0 +1,41 @@
+crontab
+
+#
+# Time setting
+14 3 * * * /usr/bin/rdate -s time.bora.net; /sbin/hwclock --systohc
+
+# Disk backup
+0 5 * * * /root/backup/rsync_backup.sh > /dev/null 2>&1
+
+# Monitoring service
+*/5 * * * * /root/monitor/apache.py > /var/log/_apache.log 2>&1
+*/5 * * * * /root/monitor/disk.py > /var/log/_disk.log 2>&1
+*/5 * * * * /root/monitor/mysql.py > /var/log/_mysql.log 2>&1
+*/5 * * * * /root/monitor/network.py > /var/log/_network.log 2>&1
+*/5 * * * * /root/monitor/uptime.py > /var/log/_uptime.log 2>&1
+*/5 * * * * /root/monitor/systeminfo.py > /var/log/_uptime.log 2>&1
+*/5 * * * * /root/monitor/checkSystem2.sh swap xml > /var/log/_checkSystem2.log 2>&1
+*/5 * * * * /root/monitor/checkSystem2.sh io xml > /var/log/_checkSystem2.log 2>&1
+*/5 * * * * /root/monitor/checkSystem2.sh count xml > /var/log/_checkSystem2.log 2>&1
+*/5 * * * * /root/monitor/checkSystem2.sh resource xml > /var/log/_checkSystem2.log 2>&1
+*/5 * * * * /root/monitor/checkSystem2.sh memory xml > /var/log/_checkSystem2.log 2>&1
+*/5 * * * * /root/monitor/checkSystem2.sh etc xml > /var/log/_checkSystem2.log 2>&1
+
+# Laravel Schedule
+* * * * * php /home/devteam/www/backoffice/artisan schedule:run >> /home/devteam/www/backoffice/storage/logs/schedule.log
+
+# backup firstmall database table & remove old data
+0 9 * * * cd /root/backup_firstmall_log && wget https://url/path/method
+0 10 * * * cd /root/backup_firstmall_db && /root/backup_firstmall.sh 2> /dev/null
+0 15 * * * cd /root/backup_firstmall_log && wget https://url/path/method
+
+# remove local garbage file
+0 16 * * * cd /root/backup_firstmall_log && find /root/backup_firstmall_log -mtime -365 -mtime +30 -exec rm -rf {} \; 2> /dev/null
+0 16 * * * cd /root/backup_firstmall_db && find /root/backup_firstmall_db -mtime -365 -mtime +30 -exec rm -rf {} \; 2> /dev/null
+0 16 * * * cd /homePath/www/enterprise_introduce/storage/logs && find /homePath/www/enterprise_introduce/storage/logs -mtime -365 -mtime +90 -exec rm -rf {} \; 2> /dev/null
+0 16 * * * cd /homePath/www/backoffice/storage/logs && find /homePath/www/backoffice/storage/logs -mtime -365 -mtime +90 -exec rm -rf {} \; 2> /dev/null
+0 16 * * * cd /var/log && find /var/log -mtime -365 -mtime +90 -exec rm -rf {} \; 2> /dev/null
+0 16 * * * cd /root/backup_database && find /root/backup_database -mtime -365 -mtime +30 -exec rm -rf {} \; 2> /dev/null
+
+# backup backoffice database table & remove old data
+0 10 * * * cd /root/backup_database && /root/backup_database.sh 2> /dev/null
