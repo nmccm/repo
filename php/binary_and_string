@@ -11,4 +11,6 @@
   echo 10 ^ 10; // 0
   echo 11 ^ 10; // 1
   
+  // 16진수 그대로 브라우저에 표시
+  echo sprintf('%02X', $prefixHex);
   
