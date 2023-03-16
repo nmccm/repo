@@ -1,0 +1,14 @@
+<?php
+
+  // hex encode
+  $c = 'ㄱ';
+  $hex = strtoupper(implode(unpack("H*", $c))); // E384B1
+  
+  $prefixHex = 0xE384B1;
+  echo sprintf("%d", $prefixHex); // 16진수 -> 10진수
+  
+  // 비트 비교 (동일한 스트링이면 0)
+  echo 10 ^ 10; // 0
+  echo 11 ^ 10; // 1
+  
+  
