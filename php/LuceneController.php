@@ -39,6 +39,12 @@ class LuceneController extends Controller
 //                ->orderByDesc()
                 ->getSearchDocuments('pono', 'ec');
 
+            
+            $result = Lucene::getInstance()
+                ->setIndex('brands')
+                ->setSearchFields(['name_en', 'name_kr'])
+                ->getSearchDocuments('acn');
+            
             dd($lucene);
         }
         catch(\Exception $e) {
