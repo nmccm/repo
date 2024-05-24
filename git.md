@@ -259,11 +259,17 @@ $ git update-index --no-assume-unchanged [file]
 
 ## remote branch 갱신 및 브랜치 재생성 방법
 ```linux
-dk_game_monitor>git checkout master
-master>git branch -D release
-master>git fetch --prune origin
-master>git checkout -t origin/release
+dk_game_monitor> git checkout master
+master> git branch -D release
+master> git fetch --prune origin
+master> git checkout -t origin/release
 ```
+
+## 마지막 commit 메세지 변경
+```linux
+release> git commit --amend
+```
+
 
 ## Trouble Shooting
 
