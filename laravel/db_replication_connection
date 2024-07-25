@@ -1,0 +1,56 @@
+    'connections' => [
+
+      // 싱글 접속
+//        'mysql' => [
+//            'driver' => 'mysql',
+//            'url' => env('DATABASE_URL'),
+//            'host' => env('DB_HOST', '127.0.0.1'),
+//            'port' => env('DB_PORT', '3306'),
+//            'database' => env('DB_DATABASE', 'dbname'),
+//            'username' => env('DB_USERNAME', 'username'),
+//            'password' => env('DB_PASSWORD', '1234'),
+//            'unix_socket' => env('DB_SOCKET', ''),
+//            'charset' => 'utf8mb4',
+//            'collation' => 'utf8mb4_unicode_ci',
+//            'prefix' => '',
+//            'prefix_indexes' => true,
+//            'strict' => true,
+//            'engine' => null,
+//            'options' => extension_loaded('pdo_mysql') ? array_filter([
+//                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+//            ]) : [],
+//        ],
+
+      // 쓰기는 3313 포트 , 읽기는 3314 포트 멀티 접속
+        'mysql' => [
+            'driver' => 'mysql',
+            'read' => [
+                'host' => [
+                    //env('DB_SLAVE_HOST', '127.0.0.1'),
+                    '172.22.211.102',
+                ],
+                'port' => 3314,
+            ],
+            'write' => [
+                'host' => [
+                    //env('DB_HOST', '127.0.0.1'),
+                    '172.22.211.102',
+                ],
+                'port' => 3313,
+            ],
+            //'port' => env('DB_PORT', '3306'),
+            'database' => 'erp_local',
+            'username' => 'root',
+            'password' => 'qwe123',
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
+    ],
+
+    'migrations' => 'migrations',
+];
