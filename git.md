@@ -245,6 +245,10 @@ $ git commit -m '헬로우
 ## 이미 GIT 서버에 올라간 파일을 더이상 추적(관리)되지 않도록 하는 방법
 ```linux
 $ git update-index --assume-unchanged [file]
+// 위 내용으로 처리가 되지 않을시 캐쉬까지 삭제해야 된다.
+$ git rm --cached [file]
+$ git add [file]
+$ git commit -m "Stop tracking [file]"
 ```
 
 ## 추적되지 않는 파일 리스트 확인
