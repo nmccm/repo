@@ -1,0 +1,43 @@
+    <style>
+        .button-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight {
+            position: absolute;
+            top: 25px;
+
+            width: 500px;
+            height: 500px;
+            background-color: rgba(211, 211, 211, 1.5);
+            border-radius: 5px;
+            pointer-events: none; /* 클릭 이벤트 무시 */
+            display: none;
+        }
+
+        .button-container:focus-within .highlight {
+            display: block; /* 버튼이 포커스를 받을 때 표시 */
+        }
+    </style>
+
+    <script>
+        $(function() {
+            $('#cli').on('click', function(e) {
+                $('.highlight').css({
+                    width: 500 + 'px',
+                    height: 500 + 'px',
+                });
+                e.preventDefault();
+
+                console.log('sdfsdf');
+            });
+        });
+    </script>
+
+<div>
+                        <div class="button-container">
+                            <div class="highlight"></div>
+                            <button id="cli">레어</button>
+                        </div>
+</div>
