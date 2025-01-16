@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop File Upload</title>
+    <style>
+        /* style.css */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .drag-area {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .drag-area .icon {
+            font-size: 50px;
+            color: #ccc;
+        }
+
+        .drag-area header {
+            font-size: 20px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .drag-area span {
+            display: block;
+            margin: 10px 0;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .drag-area button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .drag-area button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h3>Upload your File: <span id="filename">...</span></h3>
+    <div class="drag-area">
+        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+        <header>Drag & Drop to Upload File</header>
+        <span>OR</span>
+        <button>Browse File</button>
+        <input type="file" hidden>
+    </div>
+</div>
+<script>
+    // script.js
+    const dropArea = document.querySelector(".drag-area");
+    const dragText = dropArea.querySelector("header");
+    const button = dropArea.querySelector("button");
+    const input = dropArea.querySelector("input");
+
+    button.onclick = () => {
+        input.click();
+    };
+
+    input.addEventListener("change", function() {
+        const file = this.files[0];
+        dropArea.classList.add("active");
+        showFile(file);
+    });
+
+    dropArea.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        dropArea.classList.add("active");
+        dragText.textContent = "Release to Upload File";
+    });
+
+    dropArea.addEventListener("dragleave", () => {
+        dropArea.classList.remove("active");
+        dragText.textContent = "Drag & Drop to Upload File";
+    });
+
+    dropArea.addEventListener("drop", (event) => {
+        event.preventDefault();
+        const file = event.dataTransfer.files[0];
+        showFile(file);
+    });
+
+    function showFile(file) {
+        const fileType = file.type;
+        console.log('filetype : ', fileType);
+        const validExtensions = ["image/jpeg", "image/jpg", "image/png"];
+        // if (validExtensions.includes(fileType)) {
+            const fileReader = new FileReader();
+            fileReader.onload = () => {
+                const fileURL = fileReader.result;
+                const imgTag = `<img src="${fileURL}" alt="">`;
+                dropArea.innerHTML = imgTag;
+                console.log("Uploaded file name:", file.name); // 파일명 출력
+                document.getElementById('filename').innerHTML = "<label>"+file.name+"</label>";
+            };
+            fileReader.readAsDataURL(file);
+        // } else {
+        //     alert("This is not an Image File!");
+        //     dropArea.classList.remove("active");
+        //     dragText.textContent = "Drag & Drop to Upload File";
+        // }
+    }
+</script>
+</body>
+</html>
