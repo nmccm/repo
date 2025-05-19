@@ -1,0 +1,18 @@
+// 자바스크립트에서 tippy content
+
+        $(function() {
+            const el = document.getElementById('tooltip');
+            tippy($('#tooltip')[0], {
+                allowHTML: true,
+                maxWidth: 1024,
+                placement: 'auto',
+                content: '툴팁 표시',
+            });            
+
+            tippy($('#tooltip')[0], {
+                allowHTML: true,
+                maxWidth: 1024,
+                placement: 'auto',
+                content: '툴팁 표시',
+            });
+        });
